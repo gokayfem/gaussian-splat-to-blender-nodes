@@ -28,7 +28,15 @@ needed. If a newer image corrected a defect, preserve that improvement and remov
 allegation. An isolated test's omitted context is not evidence that the integrated scene
 lacks those objects.
 
-## Report the largest 3–5 current differences
+For hybrid mode, inspect obvious wrong-object textures, broad projection ghosts/stretches,
+large material/color errors and missing coverage first. Captured appearance is intentional.
+Separate unlit radiance from approximate lit materials; neither is clean albedo. Use the
+hybrid guide for baked-copy verification instead of requiring live GN on mapped surfaces.
+Rough source edges and minor seams alone do not justify another polish loop.
+
+## Report up to three materially visible current differences
+
+Fewer or none is fine. Do not fill a quota.
 
 For each finding provide:
 

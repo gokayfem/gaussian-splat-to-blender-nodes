@@ -20,6 +20,12 @@ It does not prove visual similarity or test shader/driver/compositor effects, an
 external dependencies, all non-mesh geometry or pixel equality. Run it in a disposable
 background process, never in the user's unsaved interactive scene.
 
+For hybrid delivery, apply the native audit only to untouched live-GN collections. Verify
+mapped baked copies separately: packed images, exact UV/material slots, original-material
+fallback, source/config hashes and complementary rendered views. See
+[hybrid projection](hybrid-projection.md). Captured textures are intentional in that mode;
+unlit radiance and approximate albedo must be labeled, not treated as clean relightable data.
+
 ## Review record
 
 Record UTC time, source commit, blend hash/mtime, render hashes, camera hash, engine,
@@ -33,10 +39,11 @@ Example:
 > increasing leaf density. Verify hero and right views plus the same foliage crop.
 > Hypothesis: excessive sky fill may also flatten depth; test after geometry.
 
-Rank the largest 3–5 current visible mismatches. Give region, evidence, correction and
+Rank up to three materially visible current mismatches; fewer or none is fine. Give region, evidence, correction and
 verification view. Start with framing/silhouettes, then construction/occlusion, material/light
 and detail. Preserve improvements; never repeat superseded defects. Avoid unsupported
-similarity scores and generic praise.
+similarity scores and generic praise. Rough source edges and minor seams alone do not
+justify an unbounded polish loop; prioritize normal-size multi-view appearance.
 
 No new render means no new visual finding. Record the blocker without inventing critique
 or repeating requests already acknowledged. An agent's description is not image evidence.

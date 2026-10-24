@@ -1,4 +1,4 @@
 interface:
-  display_name: "Gaussian Splat to Blender Nodes"
-  short_description: "Reconstruct splat scenes as editable Blender nodes"
+  display_name: "World to World Mapping"
+  short_description: "Reconstruct splats with Blender nodes and texture mapping"
   default_prompt: "Use $gaussian-splat-to-blender-nodes to reconstruct my Gaussian splat reference as native Blender geometry and materials, starting with camera registration and an honest multi-view checkpoint."

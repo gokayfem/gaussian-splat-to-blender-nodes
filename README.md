@@ -1,25 +1,26 @@
-# Gaussian Splat to Blender Nodes
+# World to World Mapping
 
-**Turn a captured splat scene into an editable procedural Blender scene.**
+**Gaussian splat to Blender nodes — reconstruct geometry, then optionally map captured appearance.**
 
-An agent skill and working toolkit for reconstructing Gaussian splats with native
-**Geometry Nodes meshes, Shader Node materials and measured camera matching**.
-Built from the Garden study, in the same spirit as
-[video-to-blender](https://github.com/gokayfem/video-to-blender) and
-[shader-skills](https://github.com/gokayfem/shader-skills).
+A project-independent agent skill and toolkit for measured reconstruction with native
+**Geometry Nodes, Shader Nodes and calibrated multi-view texture projection**. Built from
+the Garden study, in the spirit of [video-to-blender](https://github.com/gokayfem/video-to-blender)
+and [shader-skills](https://github.com/gokayfem/shader-skills).
 
 <p align="center">
-  <img src="gallery/garden-r011.jpg" width="640" alt="Native Blender Garden reconstruction: wooden table, vase, paving, plants and tree">
+  <img src="gallery/world-to-world-mapping.jpg" width="800" alt="World to World Mapping release: grey and textured Blender scene comparison">
 </p>
 
-*Native Blender render from the unfinished Garden r011 checkpoint, not a Gaussian splat
-render. The example source includes later experimental edits and does not exactly reproduce
-this historical image.*
-
-[Watch the 360° reference/native comparison](https://v3b.fal.media/files/b/0aaf9762/chiAtD1LprNhvBXHBy44d_garden_360_comparison_r011.mp4)
+[Watch the release video — grey/textured reveals and a matched 360° comparison](https://v3b.fal.media/files/b/0aafb407/k_VXzVOBiFnE1RwnpVGxF_world_to_world_mapping-gaussian_splat_to_blender_nodes.mp4)
 · [Read the skill](skills/gaussian-splat-to-blender-nodes/SKILL.md)
-· [Prompting workflow](prompts/README.md)
-· [Run Garden](prompts/garden/README.md)
+· [Reusable prompts](prompts/README.md)
+· [Hybrid mapping guide](skills/gaussian-splat-to-blender-nodes/references/hybrid-projection.md)
+
+*The video shows the accepted Garden c26b hybrid experiment. Its mapped table and paving
+are baked evaluated meshes with packed appearance textures; other reconstructed parts retain
+node-based construction. The source scan and fitted hybrid assets are not bundled. See
+[media provenance and limitations](gallery/README.md). The installation name remains
+`gaussian-splat-to-blender-nodes`.*
 
 ## What it does
 
@@ -30,6 +31,7 @@ parameters and materials that you can edit in Blender.
 ```text
 Splat reference → measured frame + cameras → semantic scene parts
                → Geometry Nodes + Shader Nodes → native audit + visual comparison
+               → optional calibrated appearance mapping → hybrid review + packed blend
 ```
 
 | Included | Purpose |
@@ -42,6 +44,8 @@ Splat reference → measured frame + cameras → semantic scene parts
 | Blender renderer | Sequential rendering of a shared camera manifest |
 | Still/video comparison | Strict frame pairing, labels and hashed evidence; optional FFmpeg MP4 |
 | Synthetic starter | Small editable GN table; no scan download required |
+| Hybrid mapping tools | UV preparation, depth/object visibility, robust projection, material-aware fallback and packed assembly |
+| Hybrid prompt/config | Per-project objects, material slots, cameras, source masks and appearance mode |
 | Garden study | Seven procedural parts, parameters and vendored node-building helpers |
 
 No automatic semantic segmentation, universal splat decoder or reference renderer is bundled.
@@ -133,6 +137,27 @@ For a turntable, follow the [matched 360° guide](skills/gaussian-splat-to-blend
 Reference frames must come from a compatible viewer using the same camera manifest;
 the Blender renderer handles the native side.
 
+## Map captured appearance onto your reconstruction
+
+Use the [hybrid mapping prompt](skills/gaussian-splat-to-blender-nodes/templates/prompts/hybrid-projection.md)
+when captured appearance is part of the intended result. Supply your own reconstructed
+scene and calibrated captures, then fill the
+[configuration template](skills/gaussian-splat-to-blender-nodes/templates/projection.json).
+Objects, materials, cameras, visibility masks and rejection rules are configuration inputs;
+the implementation contains no required Garden objects or fitted scene coordinates.
+
+The [step-by-step guide](skills/gaussian-splat-to-blender-nodes/references/hybrid-projection.md)
+covers the three commands: **prepare → project → assemble**. Install `requirements.txt` for
+the NumPy/SciPy/Pillow projector. Blender prepares evaluated UV surfaces and visibility maps;
+ordinary Python maps the captures; Blender packs the results onto selected mesh copies.
+Unseen/rejected texels retain the original material. Source-only occluders require masks or
+other explicit evidence; reconstructed depth alone cannot identify them.
+
+Choose unlit captured radiance or an approximate irradiance-divided lit material. Neither
+recovers clean physical albedo. Selected mapped surfaces require rebaking after geometry or
+UV edits; untouched procedural parts retain their live graphs. The original source is
+preserved, and immutable manifests tie geometry, captures and outputs together.
+
 ## Garden example
 
 Garden generates ground, table, vase/arrangement, tree, shrubs, boundary and structures
@@ -160,7 +185,8 @@ python3 -m unittest discover -s tests -v
 python3 tests/check_repository.py
 ```
 
-Tests cover coordinate invariants, malformed assets and comparison pairing. Blender checks
+Tests cover coordinate invariants, malformed assets, comparison pairing, projection visibility,
+linear-light blending, material boundaries, fallback and artifact fingerprints. Blender checks
 are documented in [tests](tests/README.md). Python CI alone does not validate rendering.
 See [AGENTS.md](AGENTS.md) for contributor rules.
 

@@ -1,8 +1,8 @@
 {
   "name": "gaussian-splat-to-blender-nodes",
-  "displayName": "Gaussian Splat to Blender Nodes",
-  "version": "0.1.0",
-  "description": "Reconstruct Gaussian splat scenes as editable Blender Geometry Nodes meshes and Shader Node materials, with matched cameras and honest visual validation.",
+  "displayName": "World to World Mapping",
+  "version": "0.2.0",
+  "description": "World to World Mapping: project-independent Blender node reconstruction and optional calibrated capture-texture mapping, with multi-view validation.",
   "author": {
     "name": "gokayfem",
     "url": "https://github.com/gokayfem"
@@ -16,6 +16,7 @@
     "gaussian-splatting",
     "geometry-nodes",
     "procedural",
-    "shader-nodes"
+    "shader-nodes",
+    "texture-projection"
   ]
 }

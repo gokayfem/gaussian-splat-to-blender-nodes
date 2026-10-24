@@ -1,6 +1,6 @@
 {
   "name": "gaussian-splat-to-blender-nodes",
-  "description": "Agent-guided Gaussian splat to native Blender reconstruction",
+  "description": "World to World Mapping: project-independent Blender node reconstruction and optional calibrated capture-texture mapping, with multi-view validation.",
   "owner": {
     "name": "gokayfem",
     "url": "https://github.com/gokayfem"
@@ -9,7 +9,7 @@
     {
       "name": "gaussian-splat-to-blender-nodes",
       "source": "./",
-      "description": "Reconstruct Gaussian splat scenes as editable Blender Geometry Nodes meshes and Shader Node materials, with matched cameras and honest visual validation.",
+      "description": "World to World Mapping: project-independent Blender node reconstruction and optional calibrated capture-texture mapping, with multi-view validation.",
       "category": "development",
       "tags": [
         "agent-skills",
@@ -17,7 +17,8 @@
         "gaussian-splatting",
         "geometry-nodes",
         "procedural",
-        "shader-nodes"
+        "shader-nodes",
+        "texture-projection"
       ]
     }
   ]

@@ -1,14 +1,15 @@
 ---
 name: gaussian-splat-to-blender-nodes
-description: Reconstruct Gaussian splat scenes as editable native Blender Geometry Nodes meshes and Shader Node materials. Use for splat-to-procedural reconstruction, matched-camera analysis, semantic scene decomposition, detailed environment recreation, native-scene audits and reference-versus-Blender comparison videos. This is an agent-guided measured workflow, not automatic splat-to-mesh conversion.
+description: Reconstruct Gaussian splat scenes as editable native Blender Geometry Nodes meshes and Shader Node materials. Use for splat-to-procedural reconstruction, matched-camera analysis, semantic scene decomposition, detailed environment recreation, native-scene audits, optional hybrid capture-texture mapping onto reconstructed surfaces, and reference-versus-Blender comparison videos. This is an agent-guided measured workflow, not automatic splat-to-mesh conversion.
 license: MIT
 ---
 
-# Gaussian Splat to Blender Nodes
+# World to World Mapping — Gaussian Splat to Blender Nodes
 
 Build an editable scene that explains the reference through geometry, materials and light.
 Use the splat as measurement and visual evidence. Deliver native source, parameters and
-honest multi-view comparisons.
+honest multi-view comparisons. Default to procedural materials. When captured appearance is
+requested, use the optional hybrid workflow below and disclose its baked-surface limits.
 
 ## Prompting a complete project
 
@@ -35,7 +36,7 @@ optional, separately authorized modes.
 
 1. List major objects and occlusions. Separate measurements, estimates and invented hidden
    surfaces. Prioritize silhouette and spatial relationships.
-2. Create collections: `GS_REFERENCE` (hidden from rendering), `GARDEN_PROCEDURAL` (or a
+2. Create collections: `GS_REFERENCE` (hidden from rendering), `SCENE_PROCEDURAL` (or a
    project-specific equivalent), `CAMERAS`, `LIGHTING`, and `QA`.
 3. Use empty mesh hosts with live GN modifiers. Build meaningful primitives, profiles,
    curves, branches and instances. Document fitted control points. Instancing every
@@ -55,21 +56,40 @@ meso-detail at the intended distance and fine detail in native-resolution crops.
 improvements in newer versions. Omissions in isolated part tests are not missing integrated
 objects.
 
-For Garden-like scenes, inspect table ring/slate/support joins; vase mouth/asymmetry;
-dried stems, fans and seedheads; bark forks; species-like leaf shapes and layering;
-paving joints, chips and litter; patchy lawn; pots, soil, stakes and beds.
+Inspect the current project's identity-defining features and intended viewing scale. Rough
+source edges and tiny seams need not block a ready-for-review result. Prioritize visible
+structure, material assignment and multi-view fidelity over numerical residuals.
+
+## Optional hybrid captured appearance
+
+When the requested mode includes captured textures, read
+[hybrid projection](references/hybrid-projection.md) and use the
+[hybrid prompt](templates/prompts/hybrid-projection.md) with
+[projection.json](templates/projection.json). Prepare reconstructed UV mesh copies in
+Blender, project registered captures with depth/object/source-mask rejection, then assemble
+packed appearance/mix images with original-material fallback. Per-project configuration
+supplies all objects, material slots, cameras, world bounds and rejection rules.
+
+Mapped copies are baked evaluated meshes, not live generated GN hosts. Preserve the source
+and rebake after geometry/UV/frame changes. Captured radiance is an unlit appearance mode;
+irradiance-divided albedo is only an approximation. Check wrong-object appearance, broad
+ghosts/stretching, large color mismatch and missing coverage in full matched views. Rank
+up to three current material issues; fewer or none is fine. Do not import another scene's
+thresholds or restart edge polishing without a materially visible defect.
 
 ## Verify what actually exists
 
 1. Build with `--python-exit-code 1`. Fail on missing parts, node warnings and invalid links.
 2. Run `scripts/audit_blend.py` in a disposable background process. It removes the scan
    in memory and compares evaluated mesh/instance signatures. It never saves the blend.
+   Apply it to live procedural collections; it intentionally rejects baked hybrid hosts.
+   Verify hybrid packed images, UV/slot wiring, fallback and complementary renders separately.
 3. Render with the reference removed. Inspect clay and beauty views, opposite/side/overview
    cameras and detail crops. Both renderers must use one shared camera manifest.
 4. Record exact source/output hashes. An audit of an old blend does not validate a new one.
-5. Read [validation and critique](references/validation-and-critique.md). Rank the largest
-   3–5 visible differences with region, correction and verification view. Separate actual
-   observations, hypotheses and agent-reported metrics.
+5. Read [validation and critique](references/validation-and-critique.md). Rank up to three
+   materially visible differences with region, correction and verification view. Separate
+   actual observations, hypotheses and agent-reported metrics.
 6. If pixel-level independence matters, compare renders before/after scan removal too.
    The structural audit does not test shader, driver or compositor side effects.
 
@@ -86,9 +106,9 @@ Never invent missing reference angles. Serialize expensive renders and use immut
 ## Tools and delivery
 
 Resolve paths relative to this skill directory. Test Blender without a scan using
-`templates/starter.py`. External Python tools use the standard library except `compare.py`
-(Pillow); MP4 encoding requires FFmpeg/libx264. Blender tools target 5.0+; report the version
-actually tested.
+`templates/starter.py`. Basic helpers use the standard library; comparisons need Pillow,
+and hybrid projection needs NumPy, SciPy and Pillow. MP4 encoding requires FFmpeg/libx264.
+Blender tools target 5.0+; report the version actually tested.
 
 Deliver the editable blend, deterministic source/parameters, camera manifests, provenance,
 audit JSON and comparisons. Report remaining mismatches and unsupported views. Do not

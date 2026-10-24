@@ -22,6 +22,7 @@ construction and validation references before implementation.
 - Explicitly allowed omissions: `{{ALLOWED_OMISSIONS_OR_NONE}}`
 - Blender executable/version and available tools: `{{ENVIRONMENT_OR_DISCOVER_LOCALLY}}`
 - Render/delivery target: `{{ENGINE_RESOLUTION_VIEWS_AND_OPTIONAL_VIDEO}}`
+- Representation mode: `{{PROCEDURAL_DEFAULT_OR_EXPLICIT_HYBRID}}`
 - Resource/time budget: `{{KNOWN_LIMITS_OR_MEASURE_AND_PROPOSE}}`
 - Existing artifacts and current state: `{{START_FRESH_OR_CHECKPOINT_PATHS}}`
 
@@ -67,6 +68,13 @@ display settings. Validate dispersed landmarks and a second view, then lock the 
 Keep derived measurement arrays aligned and versioned with the frame/source.
 
 ## 4. Representation and editability contract
+
+The following live-node rules govern procedural mode. If the selected mode is hybrid,
+also follow the hybrid-projection prompt: captured appearance is allowed on explicitly
+selected reconstructed mesh copies. Preserve source graphs, disclose baked copies and
+rebake requirements, and audit procedural collections separately. Do not mislabel a hybrid
+as wholly live/procedural. Objects, cameras, material slots and rejection rules must be
+measured/configured for this project, never copied from the Garden study.
 
 Separate `GS_REFERENCE`, `SCENE_PROCEDURAL`, `CAMERAS`, `LIGHTING` and `QA`, or document
 equivalent names. Reference imagery and splats belong only in explicitly labeled comparisons.
@@ -124,8 +132,9 @@ the previous version for a correction pass. Do not crop away a mismatch. View th
 images, not only a script's report. A structure audit is not visual acceptance.
 
 For each correction report: **observed mismatch → geometric/shader/light change → what the
-new image proves → what still differs → verification view**. Rank the largest 3–5 current
-deviations. Distinguish observations from hypotheses. Do not reuse critique against newer
+new image proves → what still differs → verification view**. Rank up to three materially visible current
+deviations; fewer or none is fine. Accept rough source edges unless they materially harm
+the intended view. Do not extend the task just to polish microscopic seams. Distinguish observations from hypotheses. Do not reuse critique against newer
 artifacts without checking them, and do not treat an isolated part's omissions as absent
 objects in the integrated scene.
 

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "reference_collections": ["GS_REFERENCE"],
+  "targets": [
+    {
+      "name": "primary_surface",
+      "object": "REPLACE_WITH_RECONSTRUCTED_OBJECT",
+      "object_id": 1,
+      "texture_size": 1024,
+      "uv_mode": "unwrap",
+      "appearance": "captured_radiance",
+      "projection": {
+        "mode": "robust",
+        "power": 12,
+        "min_cos": 0.3,
+        "vertical_min_cos": 0.3,
+        "depth_absolute": 0.006,
+        "depth_relative": 0.004,
+        "border": 9,
+        "mix_feather": 3,
+        "padding": 8
+      },
+      "material_overrides": {},
+      "reject_rules": []
+    }
+  ],
+  "views": {
+    "hero": {
+      "image": "captures/hero.png",
+      "camera": {
+        "position": [3, -4, 2],
+        "look_at": [0, 0, 0.5],
+        "up": [0, 0, 1],
+        "fov_y_deg": 50,
+        "width": 1280,
+        "height": 720
+      },
+      "source_valid_masks": {}
+    },
+    "opposite": {
+      "image": "captures/opposite.png",
+      "camera": {
+        "position": [-3, 4, 2],
+        "look_at": [0, 0, 0.5],
+        "up": [0, 0, 1],
+        "fov_y_deg": 50,
+        "width": 1280,
+        "height": 720
+      },
+      "source_valid_masks": {}
+    }
+  }
+}

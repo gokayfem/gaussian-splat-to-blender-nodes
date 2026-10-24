@@ -21,11 +21,17 @@ Check live GN generation, Shader Nodes, warnings/links and removal of `GS_REFERE
 Preserve legitimate sparse QA helpers that are not the scan. If required, render before/after
 scan removal too; a structural audit alone does not test every shader/compositor dependency.
 
+For a hybrid checkpoint, audit live procedural collections separately and follow the hybrid
+prompt for baked mapped surfaces. Reopen and verify packed images, UV/material wiring,
+fallback and source/config hashes. Record which surfaces require rebaking after edits.
+
 ## Matched stills and optional orbit
 
 Render the agreed canonical views and detail crops from the frozen version. Pair them with
 the same camera IDs, dimensions and projection in the reference renderer. Retain full frames,
-label sources and report remaining mismatches.
+label sources and report remaining mismatches. For a hybrid release, include reference,
+clay/grey and textured variants from the same poses. Grey-to-textured reveals may mix those
+registered variants; label each representation and keep the full 360° comparison readable.
 
 If an orbit is requested, define one camera manifest: target, radius/path, height/elevation,
 start azimuth, vertical FOV, image dimensions, unique pose count and FPS. A full 360° orbit

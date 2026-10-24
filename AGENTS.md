@@ -19,8 +19,10 @@ build affected parts and an integrated checkpoint as needed. Serialize heavy ren
 inspect images after appearance changes. Exit codes and geometry counts do not prove fidelity.
 
 Use deterministic seeds, units and meaningful controls. Keep live generating GN on empty
-hosts and Shader Node materials. Never replace native beauty with splats, image planes or
-an imported scan. Audit reference removal in a disposable process, never an unsaved UI scene.
+hosts and Shader Node materials in procedural mode. For an explicitly requested hybrid,
+follow the hybrid-projection guide: preserve the source and label mapped surfaces as baked
+copies requiring rebakes. Do not apply the live-host audit to them. Never replace beauty
+with splats, image planes or an imported scan. Audit reference removal in a disposable process, never an unsaved UI scene.
 
 Keep scans, decoded arrays, blends, videos, credentials and private/session logs untracked.
 Check all staged files. Preserve attribution; isolate vendor changes and prefer the local

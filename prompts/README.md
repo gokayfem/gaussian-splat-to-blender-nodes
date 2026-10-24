@@ -7,7 +7,7 @@ resemble its reference.
 
 These templates generalize the briefs, capture setup, part contracts, detail instructions
 and review loop used in the Garden study. They are rewritten for any scene, not a verbatim
-chat export. Garden remains an unfinished example; documenting its method does not imply
+chat export. The procedural Garden builder remains an unfinished example; documenting its method does not imply
 that it achieved exact replication. Private messages and session identities are not included.
 
 ## Start here
@@ -22,7 +22,10 @@ that it achieved exact replication. Private messages and session identities are 
 4. Send the [detail pass](../skills/gaussian-splat-to-blender-nodes/templates/prompts/detail-pass.md)
    once an integrated blockout exists, and the [review prompt](../skills/gaussian-splat-to-blender-nodes/templates/prompts/review-and-correction.md)
    at each new visual checkpoint.
-5. Finish with [comparison and delivery](../skills/gaussian-splat-to-blender-nodes/templates/prompts/comparison-and-delivery.md).
+5. For captured textures, use [hybrid projection](../skills/gaussian-splat-to-blender-nodes/templates/prompts/hybrid-projection.md)
+   after registration and reconstruction. Its objects, materials, masks and rejection rules
+   come from this project. Mapped surfaces are baked copies with procedural fallback.
+6. Finish with [comparison and delivery](../skills/gaussian-splat-to-blender-nodes/templates/prompts/comparison-and-delivery.md).
 
 Read [the prompting workflow](../skills/gaussian-splat-to-blender-nodes/references/prompting-workflow.md)
 for the handoffs and artifact layout, and

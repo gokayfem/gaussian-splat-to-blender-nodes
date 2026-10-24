@@ -22,3 +22,9 @@ also shows externally hosted reference imagery; it is not a fidelity certificate
 
 Repository code/instructions are MIT. Reference datasets and third-party media retain their
 own terms; this code license does not grant rights to those assets.
+
+The World to World Mapping release video records the later accepted c26b hybrid study.
+Its [provenance](gallery/README.md) distinguishes baked mapped surfaces from live procedural
+parts. Portable projection code generalizes the study's c11b robust consensus, c22s material
+slot separation and c26b bounded rejection/fallback; scene-specific coordinates and captured
+textures are not bundled. NumPy, SciPy and Pillow are runtime dependencies, not vendored code.

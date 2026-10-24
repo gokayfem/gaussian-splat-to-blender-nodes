@@ -19,6 +19,7 @@ bar. Send the narrower prompts only when their stage applies:
 | [Part contract](../templates/prompts/part-contract.md) | A component needs focused measurement/building under the shared scene contract |
 | [Detail pass](../templates/prompts/detail-pass.md) | Complete composition exists but construction/material detail remains weak |
 | [Review and correction](../templates/prompts/review-and-correction.md) | Fresh matched renders are ready for critique |
+| [Hybrid appearance mapping](../templates/prompts/hybrid-projection.md) | Captured appearance is requested on selected reconstructed surfaces |
 | [Comparison and delivery](../templates/prompts/comparison-and-delivery.md) | A frozen version needs final evidence or a comparison video |
 
 Replace `{{...}}` placeholders with project values. Blank measurements mean **measure and
