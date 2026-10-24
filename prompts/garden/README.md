@@ -3,6 +3,11 @@
 An experimental native Blender reconstruction of the Garden reference. Visually incomplete;
 useful as measured scene decomposition, not proof of automatic or perfect reconstruction.
 
+The briefs and capture/review process behind this study are generalized in the
+[project-agnostic prompt pack](../README.md). It includes the actual whole-scene reference
+capture method without copying private chat logs or treating Garden's dimensions and objects
+as universal defaults.
+
 ## Build
 
 From the repository root, with Blender 5.0+ (locally verified on 5.0.1):

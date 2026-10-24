@@ -18,6 +18,7 @@ this historical image.*
 
 [Watch the 360° reference/native comparison](https://v3b.fal.media/files/b/0aaf9762/chiAtD1LprNhvBXHBy44d_garden_360_comparison_r011.mp4)
 · [Read the skill](skills/gaussian-splat-to-blender-nodes/SKILL.md)
+· [Prompting workflow](prompts/README.md)
 · [Run Garden](prompts/garden/README.md)
 
 ## What it does
@@ -34,6 +35,7 @@ Splat reference → measured frame + cameras → semantic scene parts
 | Included | Purpose |
 |---|---|
 | Installable agent skill | Acquisition, registration, construction, detail and candid critique |
+| Project-agnostic prompt pack | Full brief, whole-scene capture, part contracts, detail, critique and delivery |
 | Asset inspector | SHA-256 and limited PLY / SPLAT / KSPLAT metadata |
 | Shared camera tools | Validated coordinates and repeatable world/scan orbit manifests |
 | Native-scene audit | Remove the reference in memory; compare mesh and instance signatures |
@@ -102,7 +104,19 @@ and leaves the saved file unchanged.
 
 ## Reconstruct your scene
 
-Give your agent a local asset or authorized source, intended views and a quality target:
+Use the [full prompting guide](prompts/README.md), starting with the
+[copy-ready project brief](skills/gaussian-splat-to-blender-nodes/templates/prompts/project-brief.md).
+It generalizes the actual structure used for the study: source selection and whole-scene
+capture, shared measurements/cameras, scoped part builders, integrated blockout, detail
+correction and final evidence. It works for other scene types and with a single agent.
+
+The [capture guide](skills/gaussian-splat-to-blender-nodes/references/whole-scene-capture.md)
+explains how repeatable reference views came from the original splat: viewer/asset identity,
+exact camera and canvas settings, settled captures, shared world coordinates, coverage views,
+analysis maps and matched close-ups. This is reference capture, not splat training.
+
+For a shorter starting message, give your agent an authorized source, intended views and a
+quality target:
 
 > Use gaussian-splat-to-blender-nodes. Reconstruct this scene as editable native Blender
 > geometry and materials. First fingerprint the asset, establish a measured coordinate
@@ -111,6 +125,10 @@ Give your agent a local asset or authorized source, intended views and a quality
 > about mismatches. Deliver source, parameters, blend and scan-removal evidence.
 
 Start with the [skill workflow](skills/gaussian-splat-to-blender-nodes/SKILL.md).
+Use the [part contract](skills/gaussian-splat-to-blender-nodes/templates/prompts/part-contract.md),
+[detail pass](skills/gaussian-splat-to-blender-nodes/templates/prompts/detail-pass.md) and
+[review prompt](skills/gaussian-splat-to-blender-nodes/templates/prompts/review-and-correction.md)
+as the project progresses.
 For a turntable, follow the [matched 360° guide](skills/gaussian-splat-to-blender-nodes/references/comparison-videos.md).
 Reference frames must come from a compatible viewer using the same camera manifest;
 the Blender renderer handles the native side.

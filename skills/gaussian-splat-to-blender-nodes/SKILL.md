@@ -10,6 +10,16 @@ Build an editable scene that explains the reference through geometry, materials 
 Use the splat as measurement and visual evidence. Deliver native source, parameters and
 honest multi-view comparisons.
 
+## Prompting a complete project
+
+For a full-scene task, use the [prompting workflow](references/prompting-workflow.md) and
+[master project brief](templates/prompts/project-brief.md). They supply the actual brief,
+capture, part-contract, detail, review and delivery prompt structure with project-specific
+values left to measure. Read [whole-scene capture](references/whole-scene-capture.md) when
+building the reference package: it explains the source-viewer, camera, coverage and close-up
+capture procedure. These prompts work with one agent; delegation and recurring review are
+optional, separately authorized modes.
+
 ## Start from evidence
 
 1. Inspect current artifact versions and preserve user work.

@@ -2,7 +2,13 @@
 
 Read `skills/gaussian-splat-to-blender-nodes/SKILL.md` before changing the workflow.
 
+For a new reconstruction, start with the [project-agnostic prompting guide](prompts/README.md).
+It links the complete project brief, source capture/calibration, part contracts, detail pass,
+visual review and delivery prompts. These are reusable project templates, not instructions
+to resume the historical Garden job or to launch agents/automations implicitly.
+
 - `skills/gaussian-splat-to-blender-nodes/`: portable skill, scripts and starter.
+- `prompts/README.md`: user-facing prompt sequence; canonical templates ship inside the skill.
 - `prompts/garden/`: experimental builder, parameters and pinned nodekit.
 - `gallery/`: small native examples with explicit artifact versions.
 - `tests/`: Python tests and Blender integration instructions.

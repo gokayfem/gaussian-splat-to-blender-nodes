@@ -1,5 +1,9 @@
 # Acquisition and camera registration
 
+For the complete source-viewer, coverage and capture sequence, read
+[whole-scene capture](whole-scene-capture.md) and use the
+[capture prompt](../templates/prompts/capture-and-registration.md).
+
 Record scene/author, asset and viewer URLs, retrieval date, bytes, SHA-256, producer/version,
 usage terms and conversions. Keep scans, decoded per-splat arrays and private session data
 local. Do not infer dataset rights from an MIT viewer.
