@@ -1,0 +1,652 @@
+{
+ "_notes": {
+  "source": "scripts/analyze_vase.py on outputs/derived/world_pos.npy (opacity > 100), world metres, Z up. Raw numbers in data/params/vase_measured.json.",
+  "vessel": "Horizontal slices (1.5 cm) of splat centres between z 0.755 and 1.04 are clearly ELLIPTICAL, not round: major axis at 46 deg from +X, centred at (-0.040, 0.015). Per-slice 1st/99th percentile extents along the major (u) and minor (v) axes give the semi axes; profile below is semi-major / max (0.153 m) and minor/major ratio. Uncertainty ~ +-0.5 cm (splat centres sit slightly inside the surface; back side (-v) is sparsely observed).",
+  "vessel_base_z": "table disc top measured at z 0.747 (median of disc splats); lowest vessel slice 0.762, so the vessel rests at ~0.752. Table disc is at z 0.7513 (data/params/table.json); base set to 0.749 so the vessel sits 2 mm into the disc (no floating gap).",
+  "vessel_rim": "top of brown splats at z 1.033-1.04; opening semi axes ~0.093 x 0.055.",
+  "holes": "located by ray-casting the dark hole pixel of the hero (443,420) and detail_vase (397,508) references onto the fitted ellipse: both give phi 62 deg (ellipse parameter from +u toward +v), z 0.84. Diameter from pixel size in both views ~3.2 cm. A second, smaller gap in the splat coverage at phi ~290 deg, z ~0.85 (back side) is less certain. Round 3: the back hole seen in the opposite (500,250) and right (485,255) references ray-casts to phi 300-302 deg, z 0.85-0.87 in both; its width ~14-20 px at ~3.2 mm/px gives a ~4.2 cm diameter.",
+  "arrangement_frame": "The whole dried arrangement is a flat, fan-like composition in a vertical plane at 55 deg from +X through the vessel centre (top-view PCA). Arrangement coordinates: s along (cos55, sin55), n along (-sin55, cos55) (n > 0 faces the hero camera), z = world height.",
+  "fan": "Cream palm fan: front layer (n ~ +0.045) of pale (230,204,164) splats, a dark vertical petiole at s ~ -0.02 from the mouth (z 1.03) to the hub at z ~1.15; blade tips from s -0.19 z 1.05 (lower left) round to s 0.0 z 1.29; detail_vase pixel picks of tips gave world points that map to radii 0.13-0.17 m from the hub. Round 1 correction: hero rays through the fan's convergence point and four blade tips, intersected with the n=0.045 plane, put the hub at (s -0.01, z 1.085) with tips 0.16-0.20 m away between 62 and 196 deg; the 3D blade tips agree. Detail pass: close_vase reference shows ~13-16 broad straw spears (width ~0.28 of length) with split two-pointed tips, pleated base and an exposed straight petiole; rebuilt as Garden Vase Fan Spear variants with uneven spacing/length/tilt/roll. Lighting agent: fan straw 0.24 vs ref 0.36 in close_vase after lighting fit -> fan translucency 0.6 with a warm light transmission colour (thin dried palm back-lit by the +y sky) and a 10 deg back-lean of the upper spears (scan PCA allows ~0-10 deg). r010 reviewer: grey-ochre and over-pleated -> warmer cream albedo (246,228,188), shallower central fold (0.15-0.35) and secondary pleats (0.08 of half-width, 2 ridges), fainter leaf lines; translucency 0.6 kept. Orbit r011 (frames 0/72/144): reference fan is a round palmate disc on a long petiole, hub ~0.11 m above the rim (frame 72 face-on view; agrees with the dark petiole in the splat rising to z 1.15 and with the original 3D blade-tip fit), spread -20..215 deg, segments ~0.15 m, joined over the inner ~45 % and split at the tips. The earlier hero-ray hub (z 1.085) was biased by overlapping lower blades and is superseded.",
+  "pods": "Orange-tan pointed leaves (median sRGB 180,139,95; tips 208,148,99) occupy s 0.0..0.23, z 1.05..1.25 with n spread -0.05..+0.06: modelled as fronds radiating from the mouth toward +s and up.",
+  "ball": "pale tan sphere: centre (s 0.230, n 0.041, z 1.178), radius 0.033 (point extents 0.031-0.052 incl. splat size).",
+  "bloom": "grey-white rough ball: centre (s 0.066, n 0.011, z 1.241), radius ~0.03.",
+  "shell": "cream spiral cone: centre (s 0.015, n 0.003, z 1.259), axis ~vertical, ~7 cm long.",
+  "cones": "two dark brown scaly elongated cones near (s 0.164, n 0.019, z 1.249) and (s 0.133, n 0.016, z 1.267), ~8-9 cm long; axes from the plane-view plot, uncertain +-15 deg.",
+  "colours": "sRGB picks from the reference renders (they include overcast light): vessel lit 125,95,65 / dark patch 70,50,35; fan cream 228,200,150; pods 205,140,90 with dark roots 115,70,40; ball 215,165,120; bloom 205,200,190; cone 105,78,52. Cycles check (lighting fitted): vessel rendered 0.76-0.87x and fan 0.57x the reference box means, so vessel albedo was raised ~1.2x; the fan is already near-white albedo -- its PCA plane normal is horizontal (yaw 146, elev -3 deg), so the remaining fan deficit is light/view-dependent splat brightness, not geometry. Round r007: dark stain centred at phi 110 deg, z 0.85 (ray-cast of the detail_vase dark patch pixel (470,480)); fan albedo warmed to golden straw and given per-piece translucency 0.25 (vase_trans) because it is back-lit from the +y sky; vessel desaturated for the opposite view. Detail pass (user: 'missing dirt', 'not enough shininess'): r008 close_vase stats ref vs ours: highlight spread p99-p50 111 vs 75, dark-grime fraction 0.25 vs 0.19, median 100 vs 109 -> polished husk (roughness 0.28-0.58, +0.25 on grime/fibres, specular 0.6), dark fibrous grime patches, light colour slightly lowered. Lighting agent: vessel lit side ~1.5x too bright under the final lighting -> vessel colours x0.82 sRGB (~0.65 linear). r009: x0.82 overshot (close_vase lit 113 vs ref 138, lower flank 69 vs 127) -> lit colour back up ~1.2x, dark/stain/grime lifted, base darkening reduced; fan albedo desaturated to pale straw (236,218,176), translucency kept. r010 integrated close_vase (ref / r010): vessel lit 138/123, lower 127/86, right 129/105; pods 167,121,79 / 146,84,49 (too saturated, G/R 0.58 vs 0.72) -> vessel light x1.13, dark/patch/stain/grime lifted ~1.25x, grime 0.45; pods to duller tan-rust (212,150,98).",
+  "balls": "Back-layer seed balls: blobs in the n<0 point layer viewed from -N (scratch analysis in scripts/analyze_vase.py --back), confirmed in the opposite/right references (several wooden and scaly balls). Centres = blob centre with n moved ~0.6 r toward +n because splat centres sit on the visible (-n) surface. kind 0 smooth, 1 scaly. Uncertainty ~1 cm.",
+  "asymmetry": "Shoulder/lip/bulge asymmetry is fitted by eye to the hero, detail_vase, left, right and opposite references (opening reads offset toward -u, rim lower on the +u end, lower +u flank fuller); the slice centres themselves vary < 1 cm, so these are small (1-1.5 cm) and exposed via the Asymmetry control. Detail pass: least-squares drift of the slice centres (vessel_axis_slope in vase_measured.json: dx/dz -0.054, dy/dz +0.053 world) = lean of 0.076 m/m toward +v (toward the hero camera) applied as a shear; S-shaped egg lean (+u flank full low, -u flank full high, 7 %) and narrower rounded base (0.5 of max at the disc) fitted by eye to close_vase.",
+  "twigs": "Fine dried twigs/fibres: count and spread judged from the hero/detail references (thin dark strands between the pods and fan, fibres right of the fan); not resolvable individually in the splat.",
+  "fibres": "Reviewer: pale streaks on the vessel in the splat are partly reconstruction streaks; husk fibres kept faint (0.12)."
+ },
+ "vessel": {
+  "centre": [
+   -0.04,
+   0.015
+  ],
+  "base_z": 0.749,
+  "height": 0.288,
+  "semi_major": 0.153,
+  "major_axis_deg": 46.0,
+  "lean_deg": [
+   0.0,
+   0.0
+  ],
+  "profile_outer": [
+   [
+    0.0,
+    0.5,
+    0.0
+   ],
+   [
+    0.03,
+    0.64,
+    0.035
+   ],
+   [
+    0.08,
+    0.76,
+    0.09
+   ],
+   [
+    0.16,
+    0.88,
+    0.19
+   ],
+   [
+    0.26,
+    0.97,
+    0.32
+   ],
+   [
+    0.34,
+    1.0,
+    0.43
+   ],
+   [
+    0.42,
+    0.99,
+    0.53
+   ],
+   [
+    0.5,
+    0.94,
+    0.65
+   ],
+   [
+    0.58,
+    0.86,
+    0.77
+   ],
+   [
+    0.66,
+    0.75,
+    0.89
+   ],
+   [
+    0.74,
+    0.62,
+    1.0
+   ]
+  ],
+  "profile_lip": [
+   [
+    0.78,
+    0.58,
+    1.015
+   ],
+   [
+    0.82,
+    0.53,
+    1.0
+   ],
+   [
+    0.9,
+    0.56,
+    0.82
+   ],
+   [
+    1.0,
+    0.62,
+    0.55
+   ]
+  ],
+  "minor_ratio": [
+   [
+    0.0,
+    0.58
+   ],
+   [
+    0.2,
+    0.5
+   ],
+   [
+    0.5,
+    0.465
+   ],
+   [
+    0.75,
+    0.52
+   ],
+   [
+    1.0,
+    0.6
+   ]
+  ],
+  "lumpiness": 0.025,
+  "holes": [
+   [
+    62.0,
+    0.31,
+    0.019
+   ],
+   [
+    300.0,
+    0.375,
+    0.03
+   ]
+  ],
+  "asymmetry": {
+   "shoulder_shift": -0.012,
+   "lip_amplitude": 0.012,
+   "lip_phase_deg": -90.0,
+   "low_bulge": 0.04,
+   "high_bulge": 0.0,
+   "lean_du_dz": -0.003,
+   "lean_dv_dz": 0.05
+  },
+  "hole_depth": 0.04
+ },
+ "arrangement": {
+  "origin": [
+   -0.04,
+   0.015
+  ],
+  "plane_deg": 55.0,
+  "fan": {
+   "hub": [
+    -0.03,
+    0.045,
+    1.13
+   ],
+   "stem_base": [
+    -0.02,
+    0.02,
+    1.0
+   ],
+   "blades": 26,
+   "angle_min_deg": -20.0,
+   "angle_max_deg": 215.0,
+   "length": 0.16,
+   "length_jitter": 0.22,
+   "blade_width": 0.14,
+   "fold": 0.35,
+   "cup": 0.1,
+   "color": [
+    246,
+    228,
+    188
+   ],
+   "translucency": 0.6,
+   "angle_jitter": 0.3,
+   "stem_color": [
+    175,
+    145,
+    100
+   ],
+   "variants": [
+    [
+     0.25,
+     0.5,
+     0.2,
+     0.25
+    ],
+    [
+     0.15,
+     0.8,
+     0.14,
+     -0.15
+    ],
+    [
+     0.35,
+     0.3,
+     0.24,
+     0.35
+    ]
+   ],
+   "lean_back": 0.18,
+   "spear_start": 0.3,
+   "web_radius": 0.45
+  },
+  "fronds": [
+   {
+    "start": [
+     0.0,
+     0.0,
+     1.02
+    ],
+    "mid": [
+     0.1,
+     0.04,
+     1.07
+    ],
+    "end": [
+     0.19,
+     0.06,
+     1.08
+    ],
+    "leaves": 9
+   },
+   {
+    "start": [
+     0.01,
+     0.0,
+     1.02
+    ],
+    "mid": [
+     0.08,
+     0.04,
+     1.1
+    ],
+    "end": [
+     0.17,
+     0.06,
+     1.18
+    ],
+    "leaves": 10
+   },
+   {
+    "start": [
+     0.0,
+     -0.01,
+     1.02
+    ],
+    "mid": [
+     0.05,
+     0.03,
+     1.14
+    ],
+    "end": [
+     0.11,
+     0.05,
+     1.23
+    ],
+    "leaves": 10
+   },
+   {
+    "start": [
+     0.0,
+     -0.02,
+     1.02
+    ],
+    "mid": [
+     0.03,
+     0.0,
+     1.14
+    ],
+    "end": [
+     0.06,
+     0.0,
+     1.25
+    ],
+    "leaves": 8
+   },
+   {
+    "start": [
+     0.0,
+     -0.03,
+     1.02
+    ],
+    "mid": [
+     0.08,
+     -0.03,
+     1.13
+    ],
+    "end": [
+     0.15,
+     -0.03,
+     1.2
+    ],
+    "leaves": 4
+   },
+   {
+    "start": [
+     -0.01,
+     -0.01,
+     1.02
+    ],
+    "mid": [
+     -0.06,
+     0.0,
+     1.1
+    ],
+    "end": [
+     -0.1,
+     0.0,
+     1.16
+    ],
+    "leaves": 6
+   },
+   {
+    "start": [
+     0.0,
+     -0.03,
+     1.02
+    ],
+    "mid": [
+     0.06,
+     -0.05,
+     1.12
+    ],
+    "end": [
+     0.13,
+     -0.06,
+     1.24
+    ],
+    "leaves": 8,
+    "color": [
+     128,
+     86,
+     52
+    ]
+   },
+   {
+    "start": [
+     -0.01,
+     -0.03,
+     1.02
+    ],
+    "mid": [
+     -0.04,
+     -0.05,
+     1.13
+    ],
+    "end": [
+     -0.08,
+     -0.06,
+     1.25
+    ],
+    "leaves": 8,
+    "color": [
+     118,
+     80,
+     50
+    ]
+   },
+   {
+    "start": [
+     0.0,
+     -0.04,
+     1.02
+    ],
+    "mid": [
+     0.1,
+     -0.06,
+     1.08
+    ],
+    "end": [
+     0.2,
+     -0.07,
+     1.14
+    ],
+    "leaves": 7,
+    "color": [
+     138,
+     92,
+     56
+    ]
+   }
+  ],
+  "pod_leaf": {
+   "length": 0.11,
+   "width": 0.32,
+   "spread_deg": 32.0,
+   "color": [
+    212,
+    150,
+    98
+   ],
+   "root_color": [
+    110,
+    72,
+    44
+   ],
+   "curl": 0.45,
+   "fold": 0.45
+  },
+  "ball": {
+   "centre": [
+    0.23,
+    0.041,
+    1.168
+   ],
+   "radius": 0.036,
+   "color": [
+    228,
+    162,
+    115
+   ]
+  },
+  "bloom": {
+   "centre": [
+    0.066,
+    0.011,
+    1.241
+   ],
+   "radius": 0.03,
+   "color": [
+    215,
+    205,
+    182
+   ]
+  },
+  "shell": {
+   "base": [
+    0.01,
+    0.0,
+    1.212
+   ],
+   "tip": [
+    0.022,
+    0.006,
+    1.3
+   ],
+   "radius": 0.024,
+   "turns": 4.0,
+   "color": [
+    222,
+    196,
+    152
+   ]
+  },
+  "cones": [
+   {
+    "base": [
+     0.125,
+     0.015,
+     1.205
+    ],
+    "tip": [
+     0.2,
+     0.03,
+     1.29
+    ],
+    "radius": 0.02
+   },
+   {
+    "base": [
+     0.1,
+     0.012,
+     1.21
+    ],
+    "tip": [
+     0.13,
+     0.016,
+     1.31
+    ],
+    "radius": 0.019
+   }
+  ],
+  "cone_color": [
+   78,
+   54,
+   36
+  ],
+  "stem_color": [
+   95,
+   65,
+   40
+  ],
+  "translucency": 0.08,
+  "balls": [
+   {
+    "centre": [
+     0.176,
+     0.0,
+     1.131
+    ],
+    "radius": 0.026,
+    "color": [
+     214,
+     156,
+     106
+    ],
+    "kind": 0
+   },
+   {
+    "centre": [
+     0.121,
+     -0.01,
+     1.102
+    ],
+    "radius": 0.026,
+    "color": [
+     118,
+     84,
+     52
+    ],
+    "kind": 1
+   },
+   {
+    "centre": [
+     0.074,
+     -0.012,
+     1.121
+    ],
+    "radius": 0.022,
+    "color": [
+     182,
+     140,
+     92
+    ],
+    "kind": 0
+   },
+   {
+    "centre": [
+     0.135,
+     0.006,
+     1.173
+    ],
+    "radius": 0.02,
+    "color": [
+     160,
+     124,
+     82
+    ],
+    "kind": 1
+   },
+   {
+    "centre": [
+     -0.016,
+     0.008,
+     1.141
+    ],
+    "radius": 0.016,
+    "color": [
+     95,
+     68,
+     44
+    ],
+    "kind": 1
+   },
+   {
+    "centre": [
+     0.031,
+     -0.02,
+     1.074
+    ],
+    "radius": 0.018,
+    "color": [
+     104,
+     70,
+     45
+    ],
+    "kind": 0
+   },
+   {
+    "centre": [
+     -0.07,
+     0.0,
+     1.134
+    ],
+    "radius": 0.015,
+    "color": [
+     82,
+     56,
+     34
+    ],
+    "kind": 1
+   }
+  ],
+  "twigs": {
+   "count": 34,
+   "length_min": 0.09,
+   "length_max": 0.24,
+   "angle_min_deg": -15,
+   "angle_max_deg": 175,
+   "out_of_plane": 0.45,
+   "curvature": 0.12,
+   "radius": 0.0011,
+   "root_z": 1.02,
+   "color": [
+    112,
+    80,
+    52
+   ]
+  }
+ },
+ "colors": {
+  "vessel_light": [
+   160,
+   116,
+   82
+  ],
+  "vessel_dark": [
+   128,
+   98,
+   72
+  ],
+  "vessel_patch": [
+   90,
+   68,
+   50
+  ],
+  "vessel_stain": [
+   70,
+   52,
+   38
+  ],
+  "fibre_amount": 0.12,
+  "dark_patch": [
+   112.0,
+   0.33,
+   0.75,
+   0.3
+  ],
+  "grime_amount": 0.45,
+  "vessel_grime": [
+   64,
+   48,
+   34
+  ]
+ }
+}

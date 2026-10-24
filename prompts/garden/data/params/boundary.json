@@ -1,0 +1,1351 @@
+{
+ "_notes": {
+  "method": "Measured with scripts/analyze_boundary.py on opaque splats (A>100/120) in world metres. 'maps' = wide top-down colour/height maps (outputs/parts/boundary/td_*.png, half 12 m, 40 px/m); 'wmap <cam>' = reference images annotated with the world XYZ of the nearest splat on a 64 px grid (outputs/parts/boundary/wmap_*.png) used to identify which boundary object each camera sees; 'profile' = height (z95) / colour statistics in 12 bins along a segment; face positions = density peak of splats with 1.3<z<3.2 per 0.5-1 m bin (garden-side face of walls, ivy and hedges).",
+  "frame": "Polyline points are [x, y, top_z]; curves lie on z=0 (paving/lawn level; boundary ground measured 0.0 +-0.1). 'offset' is lateral shift of the slab centre, + = left of travel (direction of the point list).",
+  "house_west": "Yellow London-stock brick facade seen at the top of the right_960 view. Face line from density peaks: x = -5.35 @ y=-4.5 ... -7.95 @ y=3.5 (+-0.1 m); continues north behind the hedge to y~7.3 (x~-8.0, z up to 4.2). Scan only records it up to z~3.0-3.6 (frame top), the real house is taller: 6 m used (above every reference frame). Red brick spans (window heads / bands) visible at z~0.95-1.3 in right_960; their period along the wall is a visual estimate.",
+  "shed": "Red-brick outbuilding with black door seen in low_side/left. Front face from density peaks x=4.35@y=5.0, 4.75@4.0, 4.95@2.0, 5.05@1.5. Eave height z95 2.1-2.25 along t<0.25 (profile 4.4,5.0 -> 5.5,1.0). Door centre at t~0.19 along the front (world ~4.52,4.45), width ~0.8 m, top ~1.9 m from low_side annotated grid. Depth/back height are NOT observed (no camera sees behind): 2.2 m deep, mono-pitch roof up to 2.9 m assumed.",
+  "fence": "Dark stained featheredge fence between the north hedge and the gate: brown splats (r>g>=b) 0.6<z<2.4 form a line x 2.45->2.95, y 6.25->4.6; top z95 1.74-1.80 (+-0.03). Gate (lighter, olive-grey slats): line (3.0,4.5)->(4.3,4.95), slat top 1.72, posts/arch to z95 2.1-2.18.",
+  "hedges": "North hedge face (south side) y = 3.55@x=-7.5, 4.25@-5.5, 4.75@-3.5, 5.35@-1.5, 5.85@0.5, 6.25@1.5, 6.95@3.0; centre line placed ~0.4 m behind the face; tops z95 2.45-2.65 (3.3-3.7 at the house corner). East climber/hedge on the boundary wall: face x = 5.05@y=1.5 ... 6.65@y=-3.5, tops 2.4-3.3. Ivy column in front of the shed (4.45-4.55, 2.9-3.4) up to z 3.4. Colours are sRGB scan medians: shade ~ (70,90,40), lit tops (150-185,165-200,95-120).",
+  "north_border": "Low planting band in front of the north hedge, y 4.3-5.5, z 0.5-1.2, seen across the top of opposite_960 (shrubs agent excludes y>4.2). Sparse red/pink valerian flowers in low_side.",
+  "far": "Far vegetation clusters: green splats r>7 m, z>1.8 in 2 m cells (centre, z5..z95): (13,21) 3.8-6.7, (15,21) 4-7, (17,21) 5.3-8.2, (19,21) 5.1-8.6, (11,15) 2.8-5.9, (9,19) 3.2-5.8, (13,11) 3.9-5.0, (3,7) 2.0-3.1 (tree just behind the gate). Far splat depth is poorly constrained (+-30 %), directions/elevations from the cameras are what matter. Neighbour building behind the shed: pale/brick splats (9-11, 2.5-5.5) z 3.2-4.6.",
+  "south": "South garden beyond the beds (r010 review): a dark stock-brick wall face at y -8.9..-9.5 for x -1..3 (density peak of splats z 0.8-2.0), tops z95 2.1-2.5 (2.2-2.3 used; the brighter splats at x<=-2 are sky/houses on the scan shell). Dark timber fence/lean-to x 4-6.8, y -8.1..-7.9, tops z95 1.7-2.35. Raised timber deck x 2.65-4.5, y -7.5..-8.3, deck z ~0.85 (z-histogram break), slatted balustrade along the back to z ~1.45 (splats z 1.2-1.5 at y -8.0..-8.75). Diagonal trellis/wire panel ~ (1.0-1.9, -8.3..-9.2) z 0.8-1.4 in close_pots. Shrub mass (1-2, -8.5..-9.5) z 0.5-1.3; tree canopy behind the wall (-2..-1, -9..-10.5) z 1.8-3.8; tall green mass (5, -6.5..-7) z 0.8-3.0. The earlier 'south_walls' render wall at y -7.8..-8.8 stays removed. Chairs, crates, buckets belong to STRUCTURES. r11: wall reads dark grey-brown in close_trunk/close_foliage (sooty, shaded) -> separate 'Brick Dark' material; balustrade slats sparser; back shrub starts at z 0.45 (stems/clutter below). r12: back shrub fitted as separate mounds at the measured green clusters (0.3,-9.1) z<=1.7, (1.1,-8.8) z<=1.3, (2.2,-8.6) z<=1.15; dark wall mortar close to brick tone so bricks barely resolve at 8-11 m (reference luma 40-90 there). r13 (structures: bin/wheelbarrow at x -1.3..-0.8 sit in front of the wall): re-measured the wall face from non-green, non-sky splats at z 1.1-2.2 (above prop height) per 0.5 m x-bin: x -2..-1 the far peak is y -10.3 (props at -9.1 are in front), x -0.5 -8.9 (wall steps forward: a return/pier), x 0..2.5 -9.1..-9.7..-8.95. Wall polyline now jogs back to y -10.3 for x < -0.6; canopy behind it moved to y -11.2.",
+  "trunks": "Thin pale trunk in front of the fence (low_side x~345 px): splats (2.0-2.1, 5.3-5.5) from z 0.4 to the frame top (>2.6); diameter ~0.15 m from its pixel width at 7.5 m. Top height unobserved (4.5 m assumed).",
+  "boxes": "Facade doorway: dark splats on the facade at y 2.4-3.2 (right_960 x 800-880 px, projected), height to frame top (>1.3), 2.2 m assumed. Rabbit hutch: brown splats (r>g>b) in x -7.3..-5.1, y 3.3..4.2, z 0.3..1.7 (5-95 %), median (91,65,40); body ~1.3x0.65x0.9 on legs, yaw parallel to facade (-72 deg). Not built by STRUCTURES (only chairs/slide/toys). Downpipe: black vertical in right_960 at x~580 px -> facade at y~0.2 (x -6.98), 0.08 m.",
+  "round2": "Round 2 (coordinator review r007): border as separate mounds, bigger leaves with deeper gaps on hedges/ivy, arched red bands + run-off stains + darker lower house wall, dark red-brown hutch with wire front, lower canopy behind gate so sky shows above it.",
+  "skyline": "Skyline check (analyze: elevation of non-white opaque splats from the table centre (0,0,0.75) per 4 deg azimuth): az 43-59 deg the scan skyline is 13.6-15.5 deg (el99), az 23-39 deg ~24-25 deg (ivy column / climber at r~5, z 3.1-3.5), az 15-19 ~18 deg. Far canopy tops were 17-18 deg at az 46-54 (covering the open sky above the shed in low_side); lowered so top <= 0.75 + r tan(el_scan): far_ne_a/b/c/d centres z 3.95/4.6/5.2/3.15; behind_gate canopy top ~2.8+lump.",
+  "hedge_front_r9": "Re-measured (coordinator/structures r9): per 0.5 m x-bin, 5th percentile y of tall green splats (z>1.2) = hedge front: 3.51@-7, 3.97@-5.5, 4.23@-4.5, 4.52@-3.5, 4.80@-2.5, 5.06@-1.5, 5.30-5.54@-1..-0.5, 5.96@1.5. The grey back path (z<0.25) runs y 3.6-5.3 in front of it. Hedge centre = front + half thickness + lump (front stays >= measured face), border mounds centred 0.3 behind the front with r<=0.35 and stop at x=-1.7, so the steel ball (-0.69,5.42) and the white ball on its plinth (-3.6,4.2) stay visible."
+ },
+ "palette": {
+  "brick_red_a": [
+   168,
+   100,
+   70
+  ],
+  "brick_red_b": [
+   136,
+   80,
+   58
+  ],
+  "mortar_red": [
+   178,
+   168,
+   148
+  ],
+  "stock_a": [
+   150,
+   122,
+   62
+  ],
+  "stock_b": [
+   86,
+   68,
+   38
+  ],
+  "mortar_stock": [
+   150,
+   138,
+   108
+  ],
+  "stock_band": [
+   128,
+   58,
+   40
+  ],
+  "render": [
+   170,
+   166,
+   150
+  ],
+  "roof": [
+   128,
+   128,
+   126
+  ],
+  "door": [
+   12,
+   13,
+   12
+  ],
+  "fence_a": [
+   104,
+   70,
+   48
+  ],
+  "fence_b": [
+   52,
+   34,
+   24
+  ],
+  "gate_a": [
+   175,
+   165,
+   98
+  ],
+  "gate_b": [
+   120,
+   112,
+   66
+  ],
+  "mirror": [
+   70,
+   80,
+   75
+  ],
+  "plaque": [
+   150,
+   80,
+   50
+  ],
+  "bark": [
+   150,
+   136,
+   116
+  ],
+  "hutch_a": [
+   92,
+   46,
+   30
+  ],
+  "hutch_b": [
+   52,
+   28,
+   20
+  ],
+  "wire": [
+   150,
+   150,
+   146
+  ],
+  "fence_edge_a": [
+   150,
+   122,
+   92
+  ],
+  "fence_edge_b": [
+   110,
+   86,
+   62
+  ],
+  "deck_a": [
+   82,
+   68,
+   52
+  ],
+  "deck_b": [
+   46,
+   38,
+   30
+  ],
+  "dark_a": [
+   86,
+   74,
+   56
+  ],
+  "dark_b": [
+   62,
+   54,
+   42
+  ],
+  "mortar_dark": [
+   76,
+   70,
+   60
+  ]
+ },
+ "house_band_rows": [
+  [
+   0.62,
+   0.86,
+   2.7,
+   0.42,
+   0.12
+  ],
+  [
+   3.2,
+   3.45,
+   2.7,
+   0.42,
+   0.12
+  ]
+ ],
+ "walls": [
+  {
+   "name": "house_west",
+   "material": "Brick Stock",
+   "thickness": 0.4,
+   "offset": -0.2,
+   "points": [
+    [
+     -8.0,
+     7.4,
+     6.0
+    ],
+    [
+     -8.05,
+     3.6,
+     6.0
+    ],
+    [
+     -5.2,
+     -5.15,
+     6.0
+    ]
+   ]
+  },
+  {
+   "name": "south_walls",
+   "material": "Render",
+   "thickness": 0.25,
+   "offset": 0.0,
+   "points": [
+    [
+     -5.2,
+     -5.15,
+     3.0
+    ],
+    [
+     -5.0,
+     -5.6,
+     3.0
+    ],
+    [
+     -3.5,
+     -5.3,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "east_wall",
+   "material": "Brick Red",
+   "thickness": 0.23,
+   "offset": 0.45,
+   "points": [
+    [
+     5.05,
+     1.5,
+     2.05
+    ],
+    [
+     5.25,
+     0.5,
+     2.0
+    ],
+    [
+     5.75,
+     -0.5,
+     2.0
+    ],
+    [
+     6.05,
+     -1.5,
+     2.0
+    ],
+    [
+     6.55,
+     -3.0,
+     2.0
+    ],
+    [
+     6.8,
+     -4.5,
+     2.0
+    ],
+    [
+     7.1,
+     -5.6,
+     2.0
+    ]
+   ]
+  },
+  {
+   "name": "neighbour",
+   "material": "Brick Red",
+   "thickness": 0.3,
+   "offset": 0.0,
+   "points": [
+    [
+     8.6,
+     6.4,
+     4.4
+    ],
+    [
+     10.4,
+     1.6,
+     4.4
+    ],
+    [
+     12.6,
+     2.4,
+     4.4
+    ]
+   ]
+  },
+  {
+   "name": "south_brick",
+   "material": "Brick Dark",
+   "thickness": 0.25,
+   "offset": 0.0,
+   "points": [
+    [
+     -3.0,
+     -10.4,
+     2.3
+    ],
+    [
+     -0.7,
+     -10.3,
+     2.3
+    ],
+    [
+     -0.55,
+     -9.0,
+     2.3
+    ],
+    [
+     0.0,
+     -9.1,
+     2.25
+    ],
+    [
+     0.6,
+     -9.6,
+     2.2
+    ],
+    [
+     1.5,
+     -9.3,
+     2.15
+    ],
+    [
+     2.5,
+     -8.95,
+     2.1
+    ],
+    [
+     3.3,
+     -8.9,
+     2.1
+    ]
+   ]
+  }
+ ],
+ "shed": {
+  "front": [
+   [
+    4.3,
+    5.15
+   ],
+   [
+    5.05,
+    1.5
+   ]
+  ],
+  "depth": 2.2,
+  "eave": 2.2,
+  "back": 2.35,
+  "wall_thickness": 0.23,
+  "roof_overhang": 0.08,
+  "roof_thickness": 0.05,
+  "door": {
+   "t": 0.31,
+   "width": 0.85,
+   "height": 2.0,
+   "proud": 0.03,
+   "frame_extra": 0.06
+  }
+ },
+ "fences": [
+  {
+   "name": "fence_ne",
+   "material": "Fence Wood",
+   "points": [
+    [
+     2.45,
+     6.25,
+     1.78
+    ],
+    [
+     2.95,
+     4.6,
+     1.76
+    ]
+   ],
+   "slat_width": 0.11,
+   "gap": 0.006,
+   "thickness": 0.022,
+   "post_spacing": 1.8,
+   "post_size": 0.09,
+   "cap": true,
+   "rails": [
+    0.35,
+    1.45
+   ],
+   "twist": 0.07,
+   "edge_strip": {
+    "width": 0.012,
+    "material": "Fence Edge"
+   }
+  },
+  {
+   "name": "gate",
+   "material": "Gate Wood",
+   "points": [
+    [
+     3.0,
+     4.5,
+     1.72
+    ],
+    [
+     4.3,
+     4.95,
+     1.72
+    ]
+   ],
+   "slat_width": 0.085,
+   "gap": 0.035,
+   "thickness": 0.022,
+   "post_spacing": 1.3,
+   "post_size": 0.1,
+   "post_top": 2.15,
+   "cap": false,
+   "rails": [
+    0.25,
+    1.0,
+    1.55
+   ]
+  },
+  {
+   "name": "south_east_fence",
+   "material": "Fence Wood",
+   "points": [
+    [
+     3.3,
+     -8.75,
+     1.95
+    ],
+    [
+     5.0,
+     -8.2,
+     1.95
+    ],
+    [
+     6.8,
+     -7.95,
+     1.7
+    ]
+   ],
+   "slat_width": 0.11,
+   "gap": 0.006,
+   "thickness": 0.022,
+   "post_spacing": 1.8,
+   "post_size": 0.09,
+   "cap": true,
+   "rails": [
+    0.35,
+    1.45
+   ],
+   "twist": 0.07
+  },
+  {
+   "name": "deck_rail",
+   "material": "Deck Wood",
+   "points": [
+    [
+     2.65,
+     -8.25,
+     1.45
+    ],
+    [
+     4.55,
+     -8.25,
+     1.45
+    ]
+   ],
+   "bottom": 0.88,
+   "post_bottom": 0.0,
+   "slat_width": 0.045,
+   "gap": 0.085,
+   "thickness": 0.03,
+   "post_spacing": 0.95,
+   "post_size": 0.07,
+   "cap": true,
+   "rails": [
+    0.9,
+    1.38
+   ]
+  }
+ ],
+ "plaque": {
+  "center": [
+   2.6,
+   5.62,
+   1.3
+  ],
+  "normal": [
+   -0.96,
+   -0.29,
+   0.0
+  ],
+  "radius": 0.15,
+  "tube": 0.035
+ },
+ "hedges": [
+  {
+   "name": "north_hedge",
+   "points": [
+    [
+     -7.75,
+     4.2,
+     3.3
+    ],
+    [
+     -6.5,
+     4.33,
+     2.55
+    ],
+    [
+     -5.5,
+     4.72,
+     2.75
+    ],
+    [
+     -4.5,
+     4.98,
+     2.4
+    ],
+    [
+     -3.5,
+     5.27,
+     2.7
+    ],
+    [
+     -2.5,
+     5.55,
+     2.45
+    ],
+    [
+     -1.5,
+     5.85,
+     2.75
+    ],
+    [
+     -0.6,
+     6.45,
+     2.5
+    ],
+    [
+     0.5,
+     6.5,
+     2.6
+    ],
+    [
+     1.5,
+     6.75,
+     2.75
+    ],
+    [
+     2.6,
+     7.1,
+     2.9
+    ]
+   ],
+   "thickness": 1.0,
+   "offset": 0.0,
+   "bottom": -0.05,
+   "taper": 0.45,
+   "lump": 0.25,
+   "lump_scale": 0.55,
+   "shade": [
+    52,
+    82,
+    18
+   ],
+   "lit": [
+    235,
+    250,
+    120
+   ],
+   "blossom_density": 320.0,
+   "blossom": [
+    225,
+    225,
+    210
+   ],
+   "leaf_density": 600,
+   "leaf_size": 0.1,
+   "under": 0.08,
+   "blossom_size": 0.03,
+   "blossom_above": 0.35,
+   "patchiness": 0.9,
+   "color_variation": 0.5,
+   "blossom_clustering": 0.4
+  },
+  {
+   "name": "north_border",
+   "points": [
+    [
+     -7.2,
+     3.85,
+     1.0
+    ],
+    [
+     -6.3,
+     3.9,
+     0.75
+    ],
+    [
+     -5.5,
+     4.3,
+     1.0
+    ],
+    [
+     -4.5,
+     4.55,
+     0.7
+    ],
+    [
+     -3.5,
+     4.85,
+     0.9
+    ],
+    [
+     -2.5,
+     5.1,
+     0.75
+    ],
+    [
+     -1.7,
+     5.38,
+     0.9
+    ]
+   ],
+   "thickness": 0.8,
+   "offset": 0.0,
+   "bottom": -0.05,
+   "taper": 0.6,
+   "lump": 0.08,
+   "lump_scale": 2.5,
+   "shade": [
+    22,
+    40,
+    8
+   ],
+   "lit": [
+    110,
+    150,
+    40
+   ],
+   "blossom_density": 14.0,
+   "blossom": [
+    190,
+    60,
+    70
+   ],
+   "leaf_density": 650,
+   "leaf_size": 0.07,
+   "under": 0.15,
+   "blossom_size": 0.03,
+   "color_variation": 0.6,
+   "patchiness": 0.6,
+   "clumps": {
+    "spacing": 0.6,
+    "radius": [
+     0.22,
+     0.35
+    ],
+    "height_jitter": 0.4,
+    "side_jitter": 0.05
+   },
+   "blossom_clustering": 0.3
+  },
+  {
+   "name": "east_climber",
+   "points": [
+    [
+     5.0,
+     2.45,
+     2.5
+    ],
+    [
+     5.15,
+     1.0,
+     2.45
+    ],
+    [
+     5.4,
+     0.3,
+     2.6
+    ],
+    [
+     5.75,
+     -0.4,
+     3.1
+    ],
+    [
+     6.05,
+     -1.3,
+     3.1
+    ],
+    [
+     6.1,
+     -2.0,
+     2.8
+    ],
+    [
+     6.55,
+     -3.0,
+     2.7
+    ],
+    [
+     6.8,
+     -4.3,
+     2.7
+    ],
+    [
+     7.15,
+     -5.6,
+     2.6
+    ]
+   ],
+   "thickness": 0.7,
+   "offset": 0.1,
+   "bottom": 0.5,
+   "taper": 0.3,
+   "lump": 0.5,
+   "lump_scale": 0.8,
+   "shade": [
+    52,
+    82,
+    18
+   ],
+   "lit": [
+    235,
+    250,
+    120
+   ],
+   "blossom_density": 0.0,
+   "blossom": [
+    220,
+    220,
+    210
+   ],
+   "leaf_density": 650,
+   "leaf_size": 0.085,
+   "under": 0.08,
+   "patchiness": 0.9,
+   "color_variation": 0.5
+  },
+  {
+   "name": "shed_ivy_column",
+   "points": [
+    [
+     4.5,
+     3.45,
+     3.4
+    ],
+    [
+     4.6,
+     2.85,
+     3.3
+    ]
+   ],
+   "thickness": 0.42,
+   "offset": 0.0,
+   "bottom": 0.1,
+   "taper": 0.2,
+   "lump": 0.28,
+   "lump_scale": 1.5,
+   "shade": [
+    30,
+    40,
+    14
+   ],
+   "lit": [
+    150,
+    165,
+    80
+   ],
+   "blossom_density": 0.0,
+   "blossom": [
+    220,
+    220,
+    210
+   ],
+   "leaf_density": 800,
+   "leaf_size": 0.065,
+   "under": 0.06,
+   "color_variation": 0.5,
+   "patchiness": 0.7
+  },
+  {
+   "name": "south_back_shrub",
+   "points": [
+    [
+     0.3,
+     -9.1,
+     1.6
+    ],
+    [
+     1.1,
+     -8.8,
+     1.3
+    ],
+    [
+     2.2,
+     -8.6,
+     1.1
+    ]
+   ],
+   "thickness": 0.6,
+   "offset": 0.0,
+   "bottom": 0.0,
+   "taper": 0.5,
+   "lump": 0.15,
+   "lump_scale": 2.0,
+   "shade": [
+    30,
+    46,
+    12
+   ],
+   "lit": [
+    110,
+    140,
+    50
+   ],
+   "leaf_density": 450,
+   "leaf_size": 0.07,
+   "under": 0.12,
+   "blossom_density": 0.0,
+   "blossom": [
+    220,
+    220,
+    210
+   ],
+   "clumps": {
+    "spacing": 0.55,
+    "radius": [
+     0.28,
+     0.5
+    ],
+    "height_jitter": 0.45,
+    "side_jitter": 0.2
+   }
+  },
+  {
+   "name": "south_east_mass",
+   "points": [
+    [
+     4.9,
+     -6.3,
+     2.9
+    ],
+    [
+     5.5,
+     -7.3,
+     2.9
+    ]
+   ],
+   "thickness": 1.0,
+   "offset": 0.0,
+   "bottom": -0.05,
+   "taper": 0.4,
+   "lump": 0.35,
+   "lump_scale": 0.9,
+   "shade": [
+    40,
+    62,
+    16
+   ],
+   "lit": [
+    160,
+    190,
+    70
+   ],
+   "leaf_density": 400,
+   "leaf_size": 0.1,
+   "under": 0.12,
+   "blossom_density": 0.0,
+   "blossom": [
+    220,
+    220,
+    210
+   ]
+  }
+ ],
+ "canopies": [
+  {
+   "name": "behind_gate",
+   "center": [
+    3.0,
+    7.3,
+    1.9
+   ],
+   "radii": [
+    1.5,
+    1.1,
+    0.9
+   ],
+   "shade": [
+    36,
+    58,
+    18
+   ],
+   "lit": [
+    120,
+    155,
+    55
+   ],
+   "leaf_density": 500,
+   "leaf_size": 0.1,
+   "under": 0.1,
+   "lump": 0.25
+  },
+  {
+   "name": "far_ne_a",
+   "center": [
+    12.5,
+    21.0,
+    3.95
+   ],
+   "radii": [
+    3.5,
+    2.5,
+    2.0
+   ],
+   "shade": [
+    40,
+    58,
+    22
+   ],
+   "lit": [
+    95,
+    125,
+    55
+   ],
+   "leaf_density": 130,
+   "leaf_size": 0.22,
+   "under": 0.25
+  },
+  {
+   "name": "far_ne_b",
+   "center": [
+    16.0,
+    21.0,
+    4.6
+   ],
+   "radii": [
+    3.2,
+    2.5,
+    2.2
+   ],
+   "shade": [
+    40,
+    58,
+    22
+   ],
+   "lit": [
+    95,
+    125,
+    55
+   ],
+   "leaf_density": 130,
+   "leaf_size": 0.22,
+   "under": 0.25
+  },
+  {
+   "name": "far_ne_c",
+   "center": [
+    19.5,
+    20.5,
+    5.2
+   ],
+   "radii": [
+    3.0,
+    2.5,
+    2.2
+   ],
+   "shade": [
+    40,
+    58,
+    22
+   ],
+   "lit": [
+    95,
+    125,
+    55
+   ],
+   "leaf_density": 130,
+   "leaf_size": 0.22,
+   "under": 0.25
+  },
+  {
+   "name": "far_ne_d",
+   "center": [
+    11.0,
+    15.0,
+    3.15
+   ],
+   "radii": [
+    2.5,
+    2.0,
+    1.7
+   ],
+   "shade": [
+    40,
+    58,
+    22
+   ],
+   "lit": [
+    95,
+    125,
+    55
+   ],
+   "leaf_density": 130,
+   "leaf_size": 0.22,
+   "under": 0.25
+  },
+  {
+   "name": "far_ne_e",
+   "center": [
+    9.0,
+    19.0,
+    4.5
+   ],
+   "radii": [
+    2.5,
+    2.0,
+    1.6
+   ],
+   "shade": [
+    40,
+    58,
+    22
+   ],
+   "lit": [
+    95,
+    125,
+    55
+   ],
+   "leaf_density": 130,
+   "leaf_size": 0.22,
+   "under": 0.25
+  },
+  {
+   "name": "far_e",
+   "center": [
+    13.0,
+    11.0,
+    4.4
+   ],
+   "radii": [
+    1.6,
+    1.6,
+    1.0
+   ],
+   "shade": [
+    40,
+    58,
+    22
+   ],
+   "lit": [
+    95,
+    125,
+    55
+   ],
+   "leaf_density": 130,
+   "leaf_size": 0.22,
+   "under": 0.25
+  },
+  {
+   "name": "behind_south_wall",
+   "center": [
+    -1.8,
+    -11.2,
+    2.9
+   ],
+   "radii": [
+    1.6,
+    1.0,
+    0.95
+   ],
+   "shade": [
+    36,
+    54,
+    18
+   ],
+   "lit": [
+    120,
+    150,
+    60
+   ],
+   "leaf_density": 300,
+   "leaf_size": 0.1,
+   "under": 0.12,
+   "lump": 0.3
+  }
+ ],
+ "trunks": [
+  {
+   "name": "birch_by_fence",
+   "base": [
+    2.08,
+    5.38,
+    0.0
+   ],
+   "top": [
+    1.98,
+    5.5,
+    4.5
+   ],
+   "radius": 0.075
+  }
+ ],
+ "boxes": [
+  {
+   "name": "house_doorway",
+   "center": [
+    -7.74,
+    2.75,
+    1.1
+   ],
+   "size": [
+    0.9,
+    0.08,
+    2.2
+   ],
+   "yaw": -72.0,
+   "material": "Door Paint"
+  },
+  {
+   "name": "hutch_body",
+   "center": [
+    -6.15,
+    3.6,
+    0.8
+   ],
+   "size": [
+    1.3,
+    0.65,
+    0.9
+   ],
+   "yaw": -72.0,
+   "material": "Hutch Wood"
+  },
+  {
+   "name": "hutch_roof",
+   "center": [
+    -6.15,
+    3.6,
+    1.29
+   ],
+   "size": [
+    1.45,
+    0.8,
+    0.05
+   ],
+   "yaw": -72.0,
+   "pitch": -8.0,
+   "material": "Roof Felt"
+  },
+  {
+   "name": "hutch_leg_0",
+   "center": [
+    -6.602,
+    4.084,
+    0.18
+   ],
+   "size": [
+    0.06,
+    0.06,
+    0.36
+   ],
+   "yaw": -72.0,
+   "material": "Hutch Wood"
+  },
+  {
+   "name": "hutch_leg_1",
+   "center": [
+    -6.231,
+    2.943,
+    0.18
+   ],
+   "size": [
+    0.06,
+    0.06,
+    0.36
+   ],
+   "yaw": -72.0,
+   "material": "Hutch Wood"
+  },
+  {
+   "name": "hutch_leg_2",
+   "center": [
+    -5.698,
+    3.116,
+    0.18
+   ],
+   "size": [
+    0.06,
+    0.06,
+    0.36
+   ],
+   "yaw": -72.0,
+   "material": "Hutch Wood"
+  },
+  {
+   "name": "hutch_leg_3",
+   "center": [
+    -6.069,
+    4.257,
+    0.18
+   ],
+   "size": [
+    0.06,
+    0.06,
+    0.36
+   ],
+   "yaw": -72.0,
+   "material": "Hutch Wood"
+  },
+  {
+   "name": "house_downpipe",
+   "center": [
+    -6.98,
+    0.2,
+    2.5
+   ],
+   "size": [
+    0.08,
+    0.08,
+    5.0
+   ],
+   "yaw": -72.0,
+   "material": "Door Paint"
+  },
+  {
+   "name": "hutch_wire",
+   "center": [
+    -5.836,
+    3.702,
+    0.85
+   ],
+   "size": [
+    0.75,
+    0.02,
+    0.55
+   ],
+   "yaw": -72.0,
+   "material": "Hutch Wire"
+  },
+  {
+   "name": "deck_top",
+   "center": [
+    3.6,
+    -7.9,
+    0.84
+   ],
+   "size": [
+    1.95,
+    0.8,
+    0.06
+   ],
+   "yaw": 0.0,
+   "material": "Deck Wood"
+  },
+  {
+   "name": "deck_apron",
+   "center": [
+    3.6,
+    -7.5,
+    0.74
+   ],
+   "size": [
+    1.95,
+    0.03,
+    0.16
+   ],
+   "yaw": 0.0,
+   "material": "Deck Wood"
+  },
+  {
+   "name": "deck_leg_0",
+   "center": [
+    2.7,
+    -7.55,
+    0.41
+   ],
+   "size": [
+    0.07,
+    0.07,
+    0.82
+   ],
+   "yaw": 0.0,
+   "material": "Deck Wood"
+  },
+  {
+   "name": "deck_leg_1",
+   "center": [
+    4.5,
+    -7.55,
+    0.41
+   ],
+   "size": [
+    0.07,
+    0.07,
+    0.82
+   ],
+   "yaw": 0.0,
+   "material": "Deck Wood"
+  },
+  {
+   "name": "deck_leg_2",
+   "center": [
+    2.7,
+    -8.25,
+    0.41
+   ],
+   "size": [
+    0.07,
+    0.07,
+    0.82
+   ],
+   "yaw": 0.0,
+   "material": "Deck Wood"
+  },
+  {
+   "name": "deck_leg_3",
+   "center": [
+    4.5,
+    -8.25,
+    0.41
+   ],
+   "size": [
+    0.07,
+    0.07,
+    0.82
+   ],
+   "yaw": 0.0,
+   "material": "Deck Wood"
+  }
+ ],
+ "house_stains": 0.7,
+ "house_base_dark": 0.6,
+ "hutch_yaw": -72.0,
+ "trellises": [
+  {
+   "name": "south_trellis",
+   "center": [
+    1.45,
+    -8.55,
+    0.9
+   ],
+   "width": 1.0,
+   "height": 1.2,
+   "cell": 0.12,
+   "wire": 0.006,
+   "yaw": 5.0,
+   "material": "Deck Wood"
+  }
+ ]
+}

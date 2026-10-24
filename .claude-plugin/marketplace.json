@@ -1,0 +1,24 @@
+{
+  "name": "gaussian-splat-to-blender-nodes",
+  "description": "Agent-guided Gaussian splat to native Blender reconstruction",
+  "owner": {
+    "name": "gokayfem",
+    "url": "https://github.com/gokayfem"
+  },
+  "plugins": [
+    {
+      "name": "gaussian-splat-to-blender-nodes",
+      "source": "./",
+      "description": "Reconstruct Gaussian splat scenes as editable Blender Geometry Nodes meshes and Shader Node materials, with matched cameras and honest visual validation.",
+      "category": "development",
+      "tags": [
+        "agent-skills",
+        "blender",
+        "gaussian-splatting",
+        "geometry-nodes",
+        "procedural",
+        "shader-nodes"
+      ]
+    }
+  ]
+}

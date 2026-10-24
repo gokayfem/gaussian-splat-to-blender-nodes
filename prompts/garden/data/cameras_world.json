@@ -1,0 +1,303 @@
+{
+ "meta": {
+  "hero_azimuth_deg": 100.1488497600008,
+  "hero_elevation_deg": 32.97466985362335,
+  "hero_distance_m": 2.3152202302958416
+ },
+ "world": {
+  "hero": {
+   "position": [
+    -0.34223870579927934,
+    1.911874323816588,
+    1.960100770952398
+   ],
+   "look_at": [
+    0.06299195251345768,
+    -0.6297373118160161,
+    0.21967524205954383
+   ],
+   "up": [
+    0.0015652084193845455,
+    -0.0030874561823043263,
+    0.9999940088505161
+   ],
+   "fov_y_deg": 50.0,
+   "width": 904,
+   "height": 928,
+   "note": "approved screenshot camera (viewer initial camera, 904x928, 50 deg vertical)"
+  },
+  "opposite": {
+   "position": [
+    0.3459661277631568,
+    -1.9326971069384586,
+    1.8268798009762035
+   ],
+   "look_at": [
+    0,
+    0,
+    0.6
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 50.0,
+   "width": 960,
+   "height": 640,
+   "note": "orbit az=280 el=32 d=2.32"
+  },
+  "left": {
+   "position": [
+    -1.9736672955405845,
+    -0.3533000744294603,
+    1.7576101151479206
+   ],
+   "look_at": [
+    0,
+    0,
+    0.6
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 50.0,
+   "width": 960,
+   "height": 640,
+   "note": "orbit az=190 el=30 d=2.32"
+  },
+  "right": {
+   "position": [
+    1.9736672955405847,
+    0.35330007442945965,
+    1.7576101151479206
+   ],
+   "look_at": [
+    0,
+    0,
+    0.6
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 50.0,
+   "width": 960,
+   "height": 640,
+   "note": "orbit az=10 el=30 d=2.32"
+  },
+  "overview": {
+   "position": [
+    -1.067141375218452,
+    1.8373033468176576,
+    3.3344278154017104
+   ],
+   "look_at": [
+    0,
+    0,
+    0.3
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 50.0,
+   "width": 960,
+   "height": 640,
+   "note": "orbit az=120 el=55 d=3.70"
+  },
+  "low_side": {
+   "position": [
+    -1.1553523380505184,
+    -1.6591715485447853,
+    1.2540922201594824
+   ],
+   "look_at": [
+    0,
+    0,
+    0.75
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 50.0,
+   "width": 960,
+   "height": 640,
+   "note": "orbit az=235 el=14 d=2.08"
+  },
+  "detail_vase": {
+   "position": [
+    -0.4514644840430335,
+    1.2304330957449956,
+    1.8677222981616737
+   ],
+   "look_at": [
+    0,
+    0,
+    0.95
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 40.0,
+   "width": 800,
+   "height": 800,
+   "note": "table/vase detail"
+  },
+  "close_table": {
+   "position": [
+    0.10585940715382713,
+    0.6608161473649636,
+    1.2699996069038475
+   ],
+   "look_at": [
+    0.45,
+    -0.3,
+    0.74
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 30.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "matched close-up along hero line of sight, 1.15 m"
+  },
+  "close_vase": {
+   "position": [
+    -0.1728695539574651,
+    0.8488999621254969,
+    1.4052660505923233
+   ],
+   "look_at": [
+    -0.04,
+    0.015,
+    0.97
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 30.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "matched close-up along hero line of sight, 0.95 m"
+  },
+  "close_paving": {
+   "position": [
+    -0.30302129582015147,
+    1.118242654190976,
+    0.9231330649689988
+   ],
+   "look_at": [
+    -0.27,
+    0.45,
+    0.05
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 40.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "matched close-up along hero line of sight, 1.1 m"
+  },
+  "close_trunk": {
+   "position": [
+    -0.06275971414049278,
+    -0.9078701277115222,
+    1.2585569213594767
+   ],
+   "look_at": [
+    0.1,
+    -2.55,
+    0.85
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 32.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "matched close-up along hero line of sight, 1.7 m"
+  },
+  "close_foliage": {
+   "position": [
+    -0.7093734833286965,
+    -0.4948331467603191,
+    1.2846732545436677
+   ],
+   "look_at": [
+    -1.0,
+    -2.4,
+    0.75
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 36.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "matched close-up along hero line of sight, 2.0 m"
+  },
+  "close_pots": {
+   "position": [
+    0.5558370033297014,
+    -1.4724935662533496,
+    1.022507656342559
+   ],
+   "look_at": [
+    1.2,
+    -3.9,
+    0.35
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 32.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "matched close-up along hero line of sight, 2.6 m"
+  },
+  "close_legs": {
+   "position": [
+    -1.069253230092904,
+    -1.53552685110175,
+    0.6799315375671675
+   ],
+   "look_at": [
+    0,
+    0,
+    0.35
+   ],
+   "up": [
+    0,
+    0,
+    1
+   ],
+   "fov_y_deg": 40.0,
+   "width": 1024,
+   "height": 1024,
+   "note": "supports/foot close-up from low_side side"
+  }
+ }
+}

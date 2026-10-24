@@ -1,0 +1,21 @@
+{
+  "name": "gaussian-splat-to-blender-nodes",
+  "displayName": "Gaussian Splat to Blender Nodes",
+  "version": "0.1.0",
+  "description": "Reconstruct Gaussian splat scenes as editable Blender Geometry Nodes meshes and Shader Node materials, with matched cameras and honest visual validation.",
+  "author": {
+    "name": "gokayfem",
+    "url": "https://github.com/gokayfem"
+  },
+  "homepage": "https://github.com/gokayfem/gaussian-splat-to-blender-nodes",
+  "repository": "https://github.com/gokayfem/gaussian-splat-to-blender-nodes",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "blender",
+    "gaussian-splatting",
+    "geometry-nodes",
+    "procedural",
+    "shader-nodes"
+  ]
+}

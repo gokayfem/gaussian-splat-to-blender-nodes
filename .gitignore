@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+.env
+.env.*
+outputs/
+assets/
+*.blend
+*.blend1
+*.ply
+*.splat
+*.ksplat
+*.spz
+*.npz
+*.npy
+*.mp4
+*.mov
+# Local working notes and acquisition tools are not part of the public example.
+prompts/garden/docs/
+prompts/garden/tools/
+prompts/garden/scripts/*
+!prompts/garden/scripts/render_views.py
+prompts/garden/data/splat_decode.json
+prompts/garden/data/reference_params.json
+.publish-check/

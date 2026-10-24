@@ -1,0 +1,39 @@
+{
+ "_notes": "Variation presets merged over data/params/lighting.json. Select with GARDEN_LIGHT_PRESET=<name> at build time (default/reference = lighting.json unchanged).",
+ "brighter_overcast": {
+  "_notes": "Thinner cloud: more light, flatter, almost no directionality.",
+  "key_level": 1.7,
+  "sun_fraction": 0.1,
+  "lobe_fraction": 0.1,
+  "horizon_ratio": 0.9,
+  "sun_angle_deg": 90.0,
+  "sky_color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "lobe_exponent": 6.0
+ },
+ "low_sun": {
+  "_notes": "Late-afternoon breaking cloud: warm low sun from the west-ish side with readable soft shadows.",
+  "key_level": 1.4,
+  "sun_fraction": 0.55,
+  "lobe_fraction": 0.1,
+  "sun_azimuth_deg": 150.0,
+  "sun_elevation_deg": 18.0,
+  "sun_angle_deg": 6.0,
+  "sun_color": [
+   1.0,
+   0.82,
+   0.62
+  ],
+  "sky_color": [
+   0.85,
+   0.92,
+   1.0
+  ],
+  "lobe_azimuth_deg": 150.0,
+  "lobe_elevation_deg": 18.0,
+  "lobe_exponent": 8.0
+ }
+}

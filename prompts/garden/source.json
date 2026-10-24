@@ -1,0 +1,14 @@
+{
+  "scene": "Mip-NeRF 360 Garden \u2014 High",
+  "dataset_url": "https://jonbarron.info/mipnerf360/",
+  "viewer_url": "https://projects.markkellogg.org/threejs/gaussian_splats_3d_demos/garden.html?mode=1",
+  "reference_asset_url": "https://projects.markkellogg.org/threejs/assets/data/garden/garden_high.ksplat",
+  "reference_sha256": "670f7000d28cc713f1ba041ac93ecd56bb186bb443891f0c8ac4d1354d37630b",
+  "reference_bytes": 180577356,
+  "reference_splats": 3758190,
+  "viewer_sh_degree": 2,
+  "asset_included": false,
+  "license_note": "Viewer licensing does not establish asset rights. Acquire and use the dataset under its own terms; no scan is distributed.",
+  "scale_assumption": "Table height above paving assumed to be 0.74 metres.",
+  "code_status": "Experimental source contains edits newer than historical r011 media; not an exact reproduction recipe for that checkpoint."
+}

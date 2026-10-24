@@ -1,0 +1,643 @@
+{
+ "_notes": {
+  "frame": "World metres, Z up, origin = paving under table centre (data/frame.json).",
+  "hex": "Hex lattice fitted to dark joint lines in a ground-plane mosaic of the reference renders (scripts/analyze_ground_ortho.py back-projects each view onto z=0; table-top occlusion masked). Grid search + 2 refinements maximising joint darkness under the lattice edges. across_flats is the centre spacing (slab + joint); rotation_deg is the lattice u axis; slab flat sides face +-u. Uncertainty ~ +-1 cm spacing, +-1 deg, +-1.5 cm phase; the real paving is hand-laid so local joints wander by 2-4 cm (esp. x<-0.8, y<-0.4).",
+  "paving_boundary": "Cells with >=45% pale-paving pixels (inner part, 3 cm from edges) are paved; cells under the table top (rho<0.95) are paved by construction. Boundary radius per 15-degree sector = midpoint between outermost paved and innermost unpaved centre, fitted by a 4-harmonic Fourier series r(phi) = a0 + sum(ak cos k phi + bk sin k phi). 'misclassified' lists cells the smooth boundary disagrees with. Lawn creeps over the outer slabs.",
+  "paving_level": "Median z of splat centres at rho 0.85-1.4 m |z|<5 cm (spread = p90-p10).",
+  "lawn_plane": "Least-squares plane z = c0 + c1 x + c2 y through the 5th-percentile splat height of 0.5 m cells with 2.1<rho<4.5 (lawn soil/grass base); residual std reported.",
+  "lawn_outline": "Green low splats (z<0.16) on a 10 cm grid, closed + largest component + paving disc, then the outermost radius along 72 rays fitted by an 8-harmonic Fourier series. Uncertain (+-25 cm) where shrubs overhang the lawn edge (x<-2,y<-1 and x>3). Grass/lawn mask is extended 0.1-0.45 m beyond the fitted outline so the lawn meets the path strips (the green-splat outline stops short where path splats begin); terrace and pond masks clip it.",
+  "paths": "Grey concrete edging/path strips read from gridded ground mosaics (outputs/derived/ground/crop_*.png) as polylines (x, y) with width; +-5 cm. hero_path = strip behind the lawn at the top of the hero view; far_path = strip between lawn and pond grates (opposite view); left_path = strip along x~-6.2. hero_path re-expressed in the 18-degree garden frame: centre b -3.25 (scan low band b -3.1..-3.45), a -1.6..4.6.",
+  "terrace": "Raised bed terrace measured in the structures' garden frame (rotated 18 deg about Z: a = x cos + y sin, b = -x sin + y cos). 15th-percentile splat z vs b for a 1..3: ~0 at b -3.2..-3.4 (path), kerb at b -3.55, 0.17 at b -3.8, 0.20 -4.2, 0.26 -4.6, 0.29 -5.0, 0.31-0.33 beyond. Modelled as a kerb step to z_start then a linear rise to z_end, capped at z_max. The steps notch (a -0.33..0.47, b -3.45..-4.8) is kept at path level for the structures' concrete flight. Pond: box a -3..1.55, b 3.75..5.10 lowered to floor_z with a water plane at water_z (scan p5 -0.05, p50 0.0 incl. grates). The terrace step is centred under the STRUCTURES concrete edging (b -3.50, +-0.04) so no ground face shows in front of it; ground has no kerb mesh of its own. Rear yard (x -1.6..0.5, y -8.2..-10.6, under the STRUCTURES bin and wheelbarrow): no splats below z 0.35 there (the ground is hidden by props/wall), so the terrace plateau z 0.31 is extended to y -10.7 (uncertain +-0.1); dark soil + gravel, sparse weeds.",
+  "lawn_tone": "Cubic polynomial fields in (x/4, y/4) fitted to green ground-mosaic pixels (rho>2.1 m): 'tone' = brightness / lawn median (drives per-tuft value), 'dry' = yellowness offset (drives gr_dry). Includes shading by the tree/shrubs, so it is a rendered-appearance field, not albedo.",
+  "palette": "sRGB 0-255 of the reference renders over slab interiors, joints (|edge|<6 mm) and lawn ring; these include overcast lighting and are targets for rendered appearance, not albedo."
+ },
+ "hex": {
+  "across_flats": 0.445,
+  "rotation_deg": 52.5,
+  "origin": [
+   0.3075,
+   0.01
+  ],
+  "fit_score": 0.3418
+ },
+ "paving": {
+  "boundary_fourier": [
+   1.8576706998612513,
+   -0.14957389230337442,
+   -0.022482343153844953,
+   -0.11680756109264569,
+   -0.048773101019134416,
+   -0.08370900223747597,
+   0.0918147156897443,
+   0.043428692427574606,
+   0.08623406619670967
+  ],
+  "harmonics": 4,
+  "sector_radii": [
+   1.8919340723887876,
+   1.835110597064308,
+   1.885359844828523,
+   1.9285720636310073,
+   1.7572189997006484,
+   1.6883851046031242,
+   2.5828685306637365,
+   2.232158671706458,
+   1.6343620236265757,
+   1.5921708810162072,
+   1.673129620629481,
+   1.4169706431351985,
+   1.6964116124424269,
+   1.640608691369708,
+   1.7043263428981192,
+   1.8741120715013855,
+   1.8330102619021031,
+   1.788233780285795,
+   1.8531779254732945,
+   2.118831352740463,
+   1.9554212721935547,
+   1.8864180338949186,
+   1.9707779200495508,
+   2.144526478924655
+  ],
+  "sector_angles_deg": [
+   -172.5,
+   -157.5,
+   -142.50000000000003,
+   -127.50000000000001,
+   -112.50000000000001,
+   -97.49999999999999,
+   -82.5,
+   -67.5,
+   -52.50000000000001,
+   -37.5,
+   -22.499999999999993,
+   -7.500000000000009,
+   7.499999999999999,
+   22.500000000000007,
+   37.499999999999986,
+   52.49999999999997,
+   67.49999999999999,
+   82.50000000000001,
+   97.5,
+   112.49999999999999,
+   127.50000000000001,
+   142.5,
+   157.49999999999997,
+   172.49999999999994
+  ],
+  "n_paved": 62,
+  "paved_cells": [
+   [
+    -5,
+    1
+   ],
+   [
+    -5,
+    2
+   ],
+   [
+    -5,
+    3
+   ],
+   [
+    -5,
+    4
+   ],
+   [
+    -5,
+    5
+   ],
+   [
+    -4,
+    0
+   ],
+   [
+    -4,
+    1
+   ],
+   [
+    -4,
+    2
+   ],
+   [
+    -4,
+    3
+   ],
+   [
+    -4,
+    4
+   ],
+   [
+    -4,
+    5
+   ],
+   [
+    -3,
+    -1
+   ],
+   [
+    -3,
+    0
+   ],
+   [
+    -3,
+    1
+   ],
+   [
+    -3,
+    2
+   ],
+   [
+    -3,
+    3
+   ],
+   [
+    -3,
+    4
+   ],
+   [
+    -3,
+    5
+   ],
+   [
+    -2,
+    -4
+   ],
+   [
+    -2,
+    -2
+   ],
+   [
+    -2,
+    -1
+   ],
+   [
+    -2,
+    0
+   ],
+   [
+    -2,
+    1
+   ],
+   [
+    -2,
+    2
+   ],
+   [
+    -2,
+    3
+   ],
+   [
+    -2,
+    4
+   ],
+   [
+    -2,
+    5
+   ],
+   [
+    -1,
+    -4
+   ],
+   [
+    -1,
+    -3
+   ],
+   [
+    -1,
+    -2
+   ],
+   [
+    -1,
+    -1
+   ],
+   [
+    -1,
+    0
+   ],
+   [
+    -1,
+    1
+   ],
+   [
+    -1,
+    2
+   ],
+   [
+    -1,
+    3
+   ],
+   [
+    -1,
+    4
+   ],
+   [
+    -1,
+    5
+   ],
+   [
+    0,
+    -3
+   ],
+   [
+    0,
+    -2
+   ],
+   [
+    0,
+    -1
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ],
+   [
+    0,
+    4
+   ],
+   [
+    1,
+    -3
+   ],
+   [
+    1,
+    -2
+   ],
+   [
+    1,
+    -1
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    -3
+   ],
+   [
+    2,
+    -2
+   ],
+   [
+    2,
+    -1
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    -2
+   ],
+   [
+    3,
+    -1
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ]
+  ],
+  "misclassified": [
+   {
+    "q": -5,
+    "r": 1,
+    "frac": 0.44,
+    "rho": 1.813,
+    "boundary": 1.756
+   },
+   {
+    "q": -3,
+    "r": -2,
+    "frac": 0.15,
+    "rho": 1.879,
+    "boundary": 2.078
+   },
+   {
+    "q": -2,
+    "r": -4,
+    "frac": 0.54,
+    "rho": 2.383,
+    "boundary": 2.191
+   },
+   {
+    "q": -2,
+    "r": -3,
+    "frac": 0.21,
+    "rho": 1.949,
+    "boundary": 2.186
+   },
+   {
+    "q": 0,
+    "r": -4,
+    "frac": 0.11,
+    "rho": 1.91,
+    "boundary": 2.021
+   }
+  ],
+  "level_z": 0.003494348144158721,
+  "level_spread": 0.029363362677395345
+ },
+ "lawn": {
+  "plane": [
+   0.05335381091608958,
+   0.0012679530648165606,
+   -0.0038537074727181754
+  ],
+  "plane_residual_std": 0.014547074455181304,
+  "plane_cells": 105,
+  "outline_fourier": [
+   3.9252777777777803,
+   -0.09416550483315561,
+   0.6670691382786903,
+   0.8237003497644183,
+   -0.08722477440510001,
+   -0.370030022558935,
+   0.4478810724260726,
+   0.0318794063225085,
+   -0.047562309335067984,
+   -0.17500286864693046,
+   0.19485495089895766,
+   -0.030539523983499774,
+   -0.03337178854536268,
+   -0.2690146174396138,
+   0.09610514572336244,
+   0.011502181146601533,
+   -0.03556459963676453
+  ],
+  "outline_harmonics": 8,
+  "tone_field": {
+   "terms": [
+    "1",
+    "x",
+    "y",
+    "xx",
+    "xy",
+    "yy",
+    "xxx",
+    "xxy",
+    "xyy",
+    "yyy"
+   ],
+   "coord_scale": 4.0,
+   "tone": [
+    1.1444256583928234,
+    0.11671990387926465,
+    0.7162234447462583,
+    -0.24752201337225266,
+    0.0895273404649969,
+    -0.4668416954290611,
+    -0.158576334030358,
+    -0.10705059530142454,
+    0.12050357426707531,
+    -0.477731943475037
+   ],
+   "dry": [
+    0.041967191208682794,
+    0.06514676528758219,
+    0.09961968446097255,
+    -0.05938293356073944,
+    0.005455671255339031,
+    -0.1801517942621736,
+    -0.05902190883032803,
+    0.0003229675582106005,
+    -0.018917059896266027,
+    0.020565905410819197
+   ],
+   "tone_residual_std": 0.1797624726637408,
+   "n": 17392,
+   "median_rgb": [
+    117.6,
+    131.9,
+    49.6
+   ]
+  }
+ },
+ "palette": {
+  "slab": {
+   "median": [
+    128.0,
+    114.0,
+    80.0
+   ],
+   "p10": [
+    86.0,
+    75.0,
+    39.0
+   ],
+   "p90": [
+    175.0,
+    159.0,
+    131.0
+   ],
+   "n": 213026
+  },
+  "joint": {
+   "median": [
+    113.0,
+    100.0,
+    56.0
+   ],
+   "p10": [
+    72.0,
+    61.0,
+    22.0
+   ],
+   "p90": [
+    163.0,
+    147.0,
+    107.0
+   ],
+   "n": 16797
+  },
+  "lawn": {
+   "median": [
+    116.0,
+    127.0,
+    49.0
+   ],
+   "p10": [
+    65.0,
+    80.0,
+    21.0
+   ],
+   "p90": [
+    155.0,
+    165.0,
+    82.0
+   ],
+   "n": 302077
+  }
+ },
+ "paths": {
+  "hero_path": {
+   "points": [
+    [
+     -0.517,
+     -3.585
+    ],
+    [
+     1.004,
+     -3.091
+    ],
+    [
+     2.431,
+     -2.627
+    ],
+    [
+     3.857,
+     -2.164
+    ],
+    [
+     5.379,
+     -1.669
+    ]
+   ],
+   "width": 0.32,
+   "thickness": 0.05,
+   "z": 0.02
+  },
+  "far_path": {
+   "points": [
+    [
+     -6.4,
+     2.38
+    ],
+    [
+     -4.5,
+     2.75
+    ],
+    [
+     -2.5,
+     3.3
+    ],
+    [
+     0.0,
+     3.7
+    ],
+    [
+     1.3,
+     3.95
+    ]
+   ],
+   "width": 0.28,
+   "thickness": 0.05,
+   "z": 0.0
+  },
+  "left_path": {
+   "points": [
+    [
+     -6.35,
+     2.3
+    ],
+    [
+     -6.3,
+     1.0
+    ],
+    [
+     -6.25,
+     -0.5
+    ]
+   ],
+   "width": 0.42,
+   "thickness": 0.04,
+   "z": 0.02
+  },
+  "stepping_stones": [
+   [
+    0.68,
+    -2.05,
+    0.0
+   ],
+   [
+    0.6,
+    -2.5,
+    0.4
+   ]
+  ]
+ },
+ "terrace": {
+  "frame_deg": 18.0,
+  "kerb_b": -3.5,
+  "kerb_width": 0.08,
+  "b_start": -3.6,
+  "z_start": 0.16,
+  "b_end": -5.0,
+  "z_end": 0.3,
+  "z_max": 0.31,
+  "notch": {
+   "a": [
+    -0.33,
+    0.47
+   ],
+   "b": [
+    -4.8,
+    -3.45
+   ],
+   "z": 0.04,
+   "feather": 0.03
+  },
+  "pond": {
+   "a": [
+    -3.0,
+    1.55
+   ],
+   "b": [
+    3.75,
+    5.1
+   ],
+   "floor_z": -0.12,
+   "water_z": -0.02,
+   "feather": 0.05
+  }
+ },
+ "lights": [
+  [
+   -0.85,
+   -0.2
+  ],
+  [
+   0.575,
+   0.375
+  ]
+ ],
+ "lights_radius": 0.045
+}

@@ -1,0 +1,51 @@
+{
+ "_notes": {
+  "summary": "Overcast daylight fitted to the Garden splat reference (scripts/analyze_lighting.py; evidence in outputs/derived/lighting_analysis.json). Reference preset = defaults here; variations in lighting_presets.json via env GARDEN_LIGHT_PRESET.",
+  "normalization": "Strengths are derived so an unoccluded upward Lambertian surface of base colour C renders ~ key_level*C (display-linear). Verified: albedo 0.5 plane -> 0.478 EEVEE / 0.500 Cycles at key_level 1.0. In the enclosed garden (hedges/tree occlude low sky) open paving receives ~0.65-0.75 of that, so key_level>1 compensates.",
+  "direction": "Splat DC colours: paving under the table (r 0.3-0.6 m) vs open paving (r 1.0-1.4 m) per 45-deg sector = 1.11 at az67, 0.94 at az157, 0.52 at az-113, 0.55 at az-23 (sectors without the dark X-base). Light reaches under the table from +y and the table occludes the -y side -> soft directional component from az ~70 deg (+y, slightly +x). Table-top view-dependent sheen agrees: weathered planks are 2.4x brighter (lin) from the opposite (-y, el 32) and low_side cameras whose mirror directions point at the +y sky at 15-45 deg elevation than from the hero camera. Elevation (35 deg) and angle are uncertain (+-15 deg); no crisp shadow edges are visible anywhere, so sun_angle is very large (60 deg). Final fit on integrated outputs/garden.blend: elevation 55 deg puts the hero-visible under-table paving (world ~(0.15,0.29)) in the table's soft shadow while the low_side under-table spot (0.65,0.16) stays lit, matching both. sun_fraction 0.42 fitted to the opposite-view table shadow on the near paving (front/sides lin ratio ref 0.47, EEVEE 0.42, Cycles 0.26).",
+  "sky": "Camera-visible sky in low_side (only clear patch) = sRGB (0.914,0.918,0.894), lin lum 0.82 -> slightly warm-neutral; horizon_ratio 0.75 reproduces it with key_level 1.0-1.3 (render 0.985x).",
+  "white_balance": "Reference neutral surfaces (slate centre: sRGB 0.357,0.361,0.322; sky) are near-neutral with a small blue deficit; sky_color/sun_color carry that (b ~0.95). No view transform grading: Standard, look None, exposure 0.",
+  "uncertainty": "Splat colours bake lighting and per-view exposure differences (hero is the brightest view: open paving lin 0.42 vs 0.11-0.28 in other views, partly because the -y paving is genuinely darker/dirtier). key_level is set against the hero view.",
+  "fit_results": "Cycles r3c (render/ref lin lum): hero paving 0.82, lawn 0.96, planks 0.97, slate 1.05; opposite planks 0.77 (was 0.39), slate 1.44 (was 0.20); low_side planks 0.65 (was 0.52), slate 0.28 (occluded reflection). Opposite table shadow on near paving front/sides 0.32 vs ref 0.47. Hero under-table/open paving contrast weaker than ref (render 0.80 vs 0.59, lin); the reference spot is also browner (leaf litter).",
+  "ground_color": "Below-horizon world radiance lowered to a dark near-neutral 0.07 so it no longer adds an olive fill on top of the real ground geometry's bounce (EEVEE does not occlude world light).",
+  "engine": "EEVEE ~2-3 s/view at 0.6 scale/16 spp; Cycles GPU Metal ~10-22 s/view at 0.6 scale/64 spp + denoise. Cycles gives real occlusion in foliage/hedges and leg contact; EEVEE's world light is too even in deep foliage.",
+  "sky_lobe_round2": "Bright low cloud band decoupled from the sun: lobe_azimuth 95, lobe_elevation 30, exponent 24, 30% of horizontal irradiance (peak radiance ~10 vs dome ~0.6). Fitted to glossy reflections: mirror directions of the planks/slate are az 84-113 el 31-34 from the opposite camera (silver in the reference), az -65..-94 el 33-42 from hero (hits the tree crown, centre az -96 el 43, so it stays dark), az 52 el 20 from low_side (hits the boundary hedge/wall in the model). key_level 1.3 because four independent hero surfaces (paving 0.67, lawn 0.71, planks 0.74, slate 0.82 render/ref in r007) were all ~25-30% dark; it was not raised to fix a single albedo. sun_fraction 0.25 because the lobe now also casts the -y table shadow.",
+  "detail_pass": "Lobe moved az 95->110, exponent 24->16, fraction 0.30->0.35 (same key 1.3, sun 0.25). Same build (int_d1), Cycles 32spp: opposite slate 1.42->0.88, planks 0.77->0.76, hero planks/slate/lawn 0.97/1.06/0.91 -> 0.96/1.02/0.92 unchanged, palm fan straw pixels +13% (close_vase median lin 0.21->0.24 vs ref 0.36), low_side under/open paving 1.13/1.12 (not crushed), low_side planks 0.66->0.62. Unoccluded az-146 vertical face gets 0.75 of horizontal irradiance (was 0.62); the fan's remaining ~1.5x gap cannot come from light without breaking horizontal ratios -> material (translucency, frond tilt, albedo)."
+ },
+ "key_level": 1.3,
+ "sun_fraction": 0.25,
+ "lobe_fraction": 0.35,
+ "horizon_ratio": 0.9,
+ "zenith_gamma": 0.6,
+ "lobe_exponent": 16.0,
+ "sun_azimuth_deg": 70.0,
+ "sun_elevation_deg": 55.0,
+ "sun_angle_deg": 25.0,
+ "sky_color": [
+  1.0,
+  1.0,
+  0.95
+ ],
+ "sun_color": [
+  1.0,
+  0.98,
+  0.94
+ ],
+ "ground_color": [
+  0.07,
+  0.07,
+  0.06
+ ],
+ "camera_sky_gain": 1.0,
+ "exposure": 0.0,
+ "eevee": {
+  "raytracing": true,
+  "fast_gi": true,
+  "fast_gi_distance": 2.0,
+  "shadow_rays": 2,
+  "shadow_steps": 8,
+  "ao_quality": 0.75
+ },
+ "lobe_azimuth_deg": 110.0,
+ "lobe_elevation_deg": 30.0
+}

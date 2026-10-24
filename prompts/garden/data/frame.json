@@ -1,0 +1,36 @@
+{
+ "scale_m_per_unit": 0.5435165736762141,
+ "origin_scan": [
+  0.3723784180874842,
+  2.691464988656841,
+  1.7513908531994908
+ ],
+ "R_scan_to_world": [
+  [
+   0.0,
+   -0.4765255680429094,
+   0.8791606127445556
+  ],
+  [
+   -0.999995233784126,
+   0.0027143731939994406,
+   0.001471253613276751
+  ],
+  [
+   -0.0030874599642558317,
+   -0.8791564224752875,
+   -0.4765232968191827
+  ]
+ ],
+ "ground_normal_scan": [
+  -0.0030874599642558317,
+  -0.8791564224752875,
+  -0.4765232968191827
+ ],
+ "table_top_height_units": 1.361504020005903,
+ "table_radius_units": 1.4392017092157967,
+ "table_radius_m": 0.7822299818219208,
+ "table_height_m": 0.74,
+ "assumption": "Metric scale set by assuming the table top is 0.74 m above the paving.",
+ "table_fit": "rim boundary: 98th-percentile radius per 2-degree sector of top-height splats"
+}

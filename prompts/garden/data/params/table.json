@@ -1,0 +1,89 @@
+{
+ "measured": {
+  "top": {
+   "top_z": 0.7521267294883728,
+   "top_z_median": 0.7439366579055786,
+   "rim_radius": 0.784660080075264,
+   "plank_thickness": 0.03685811042785636,
+   "plank_inner_radius": 0.29000000000000015,
+   "disc_z": 0.7512727379798889,
+   "disc_points": 1973,
+   "disc_rgb": [
+    160.0,
+    157.0,
+    147.0
+   ]
+  },
+  "planks": {
+   "plank_count": 40,
+   "gap_phase_deg": 6.5,
+   "gap_contrast": -65.32257555434009
+  },
+  "legs": [
+   {
+    "axis_deg": 30.0,
+    "radius": 0.552977442741394,
+    "size": 0.05629366636276245
+   },
+   {
+    "axis_deg": 210.0,
+    "radius": 0.535763144493103,
+    "size": 0.054925501346588135
+   },
+   {
+    "axis_deg": 120.0,
+    "radius": 0.5498664379119873,
+    "size": 0.05267729163169865
+   },
+   {
+    "axis_deg": 300.0,
+    "radius": 0.5511021614074707,
+    "size": 0.055673985481262234
+   }
+  ],
+  "beams": [
+   {
+    "axis_deg": 30.0,
+    "width": 0.09304157972335808,
+    "height": 0.09386665433645248,
+    "half_length": 0.7358481612801548
+   },
+   {
+    "axis_deg": 120.0,
+    "width": 0.09199354290962214,
+    "height": 0.08801312267780302,
+    "half_length": 0.6787434816360474
+   }
+  ]
+ },
+ "top_height": 0.75,
+ "rim_radius": 0.783,
+ "plank_thickness": 0.028,
+ "plank_inner_radius": 0.29,
+ "plank_count": 40,
+ "gap_phase_deg": 6.5,
+ "gap_width": 0.006,
+ "disc_radius": 0.286,
+ "leg_radius": 0.547,
+ "leg_size": 0.063,
+ "leg_axis_deg": 30.0,
+ "foot_half_length": 0.679,
+ "foot_width": 0.085,
+ "foot_height": 0.091,
+ "wood_rgb_srgb": [
+  188,
+  148,
+  104
+ ],
+ "wood_structure_rgb_srgb": [
+  40,
+  31,
+  23
+ ],
+ "slate_rgb_srgb": [
+  68,
+  68,
+  60
+ ],
+ "_notes": "World metres, Z up, origin on paving under the table centre (data/frame.json; scale fixed by assuming top=0.74 m, the measured 90th-pct top is ~0.75 so the true top sits ~1 cm above that assumption). top_z: 90th pct z of opaque splats at r 0.3-0.75, z>0.735 (+-5 mm). rim_radius: 99.5th pct r of the top band (+-5 mm). plank_thickness: 2-98 pct z spread at the rim edge is ~3.7 cm but includes splat blur; the close_legs reference shows a thin rim band, so the fitted default is 2.8 cm. plank_inner_radius: radial density step in the top band (~0.295). Centre disc: almost no opaque splats - it is a dark glossy slate that reflects the sky (low-opacity pale splats at z~0.751, flush with the planks; the mirrored vase appears as dark splats 0.5-0.72 m below it), so its colour comes from the reference images, not the splats. plank_count/gap_phase: grid search over N=30..55 and phase minimising the mean luminance on candidate gap lines (dark gaps) -> 40 wedge planks, gaps at 6+9k deg; confirmed by eye on the unwrapped polar plot. Legs: 4 square legs (~6 cm) at r~0.54 on the 30/120/210/300 deg axes, standing on the foot beams. Foot: two crossing beams (X) along 30 and 120 deg, ~8 cm wide, ~9 cm tall, ends at +-0.68 m with tapered/rounded ends. The pale discs in the hero/opposite views are ground lights in the paving, not table feet. No bearers are visible under the top in close_legs/low_side, so none are modelled. The X foot has a round (umbrella) hole at the crossing and sled-sloped beam ends (close_legs). Colours (sRGB) sampled from outputs/reference/hero_904.png: planks ~(146,117,89)-(154,128,102), disc ~(82-90,80-90,71-78), legs ~(113,83,57). Shader base colours (wood_rgb_srgb etc.) are albedo values calibrated in Cycles against hero, opposite, close_table and close_legs crops under the fitted lighting."
+}
